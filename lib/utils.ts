@@ -6,8 +6,8 @@ import {
 import * as eddsa from "./eddsa.ts";
 import * as ecdsa from "./ecdsa.ts";
 
-import { base58Encode, base58Decode } from './base58/index.js';
-import { base64UrlToUint8Array, Uint8ArrayToBase64Url } from "./base64.ts";
+import { base58Encode, base58Decode } from './encodings/base58/index.js';
+import { base64UrlToUint8Array, Uint8ArrayToBase64Url } from "./encodings/base64.ts";
 
 interface MultikeyBinaryData {
     preamble: Preamble<number>,

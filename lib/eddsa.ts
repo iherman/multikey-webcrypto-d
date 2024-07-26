@@ -1,6 +1,6 @@
 import { Uint8ToMultikey } from './utils.ts'; 
 import { JWKKeyPair, MultikeyPair, EddsaPreambles } from "./types.ts";
-import { Uint8ArrayToBase64Url } from './base64.ts'; 
+import { Uint8ArrayToBase64Url } from './encodings/base64.ts'; 
 
 
 export function JWKToMultikey(pub: JsonWebKey, sec?: JsonWebKey): MultikeyPair {
