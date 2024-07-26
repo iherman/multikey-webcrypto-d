@@ -1,6 +1,6 @@
 import {
     JWKKeyPair, MultikeyPair, Multikey, Preamble,
-    MultikeyPreambles, EddsaPreambles, Ecdsa256Preambles, Ecdsa384Preambles,
+    EddsaPreambles, Ecdsa256Preambles, Ecdsa384Preambles,
     CryptoKeyClasses, CryptoKeyTypes, CryptoKeyData
 } from "./types.ts";
 import * as eddsa from "./eddsa.ts";
@@ -21,20 +21,29 @@ export function Uint8ToMultikey(val: string, preamble: Preamble<number>): string
     return 'z' + base58Encode(val_mk);
 }
 
-function MultikeyBinary(key: Multikey): MultikeyBinaryData {
-    // Check whether the first character is a 'z' before removing it
-    if (key[0] === 'z') {
-        const unencoded_key: Uint8Array = base58Decode(key.slice(1));
-        return {
-            preamble: [unencoded_key[0], unencoded_key[1]],
-            key_binary: unencoded_key.slice(2),
-        };
-    } else {
-        throw new Error(`"${key}" is not encoded as required (first character should be a 'z')`);
-    }
-}
 
+/**
+ * Generic function to convert a multikey pair to JWK. This function primarily decodes the multikey data
+ * into a binary buffer, checks the preambles and invokes the crypto specific converter functions that do the final
+ * conversion from the binary data to JWK.
+ * 
+ * @param keys 
+ * @returns 
+ */
 export function MultikeyPairToJWK(keys: MultikeyPair): JWKKeyPair {
+    const MultikeyBinary = (key: Multikey): MultikeyBinaryData => {
+        // Check whether the first character is a 'z' before removing it
+        if (key[0] === 'z') {
+            const unencoded_key: Uint8Array = base58Decode(key.slice(1));
+            return {
+                preamble: [unencoded_key[0], unencoded_key[1]],
+                key_binary: unencoded_key.slice(2),
+            };
+        } else {
+            throw new Error(`"${key}" is not encoded as required (first character should be a 'z')`);
+        }
+    };
+
     const public_binary = MultikeyBinary(keys.publicKeyMultibase);
     const public_data: CryptoKeyData = classifyKey(public_binary.preamble);
     if (public_data.crType !== CryptoKeyTypes.PUBLIC) {
@@ -70,9 +79,14 @@ export function MultikeyPairToJWK(keys: MultikeyPair): JWKKeyPair {
     }
 }
 
+
+/*************************************************************************************************/
+/*                                     Internal utilities                                        */
+/*************************************************************************************************/
 /**
- * Classify the crypto key based on the multikey preamble characters that are at the start of the code. These are two binary number,
- * signalling the crypto class (ecdsa or eddsa) and, in the former case, the hash function.
+ * Classify the crypto key based on the multikey preamble characters that are at the start of the code. 
+ * These are two binary numbers, signalling the crypto class (ecdsa or eddsa) and, in the former case, 
+ * the hash function.
  * 
  * @param preamble 
  * @returns 

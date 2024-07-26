@@ -12,23 +12,23 @@ export interface MultikeyPair {
 
 export type Preamble<T> = [T,T];
 
-export interface MultikeyPreambles {
-    public: Preamble<number>,
+interface MultikeyPreambles {
+    public:  Preamble<number>,
     private: Preamble<number>,
 }
 
 export const EddsaPreambles: MultikeyPreambles = {
-    public: [0xed, 0x01],
+    public:  [0xed, 0x01],
     private: [0x80, 0x26],
 };
 
 export const Ecdsa256Preambles: MultikeyPreambles = {
-    public: [0x80, 0x24],
+    public:  [0x80, 0x24],
     private: [0x86, 0x26],
 }
 
 export const Ecdsa384Preambles: MultikeyPreambles = {
-    public: [0x81, 0x24],
+    public:  [0x81, 0x24],
     private: [0x87, 0x26],
 };
 

@@ -13,7 +13,7 @@ export function str(inp: any): void {
 
 
 async function toJWK(newPair: CryptoKeyPair): Promise<JWKKeyPair> {
-    const publicKey: JsonWebKey = await crypto.subtle.exportKey("jwk", newPair.publicKey);
+    const publicKey: JsonWebKey  = await crypto.subtle.exportKey("jwk", newPair.publicKey);
     const privateKey: JsonWebKey = await crypto.subtle.exportKey("jwk", newPair.privateKey);
     return { public: publicKey, private: privateKey };
 }
