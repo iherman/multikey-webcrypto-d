@@ -1,6 +1,5 @@
 import * as utils from './lib/utils.ts';
-import * as eddsa from './lib/eddsa.ts';
-import { JWKKeyPair, MultikeyPair } from "./lib/types.ts";
+import { JWKKeyPair, MultikeyPair } from "./lib/common.ts";
 
 
 /** ----------------------------- */
@@ -12,23 +11,16 @@ export function str(inp: any): void {
 }
 
 
-async function toJWK(newPair: CryptoKeyPair): Promise<JWKKeyPair> {
-    const publicKey: JsonWebKey  = await crypto.subtle.exportKey("jwk", newPair.publicKey);
-    const privateKey: JsonWebKey = await crypto.subtle.exportKey("jwk", newPair.privateKey);
-    return { public: publicKey, private: privateKey };
-}
-
-
 // generate an eddsa key
 const newPair: CryptoKeyPair = await crypto.subtle.generateKey({name: "Ed25519"}, true, ["sign", "verify"]) as CryptoKeyPair;
-const keyPair: JWKKeyPair = await toJWK(newPair);
+const keyPair: JWKKeyPair = await utils.toJWK(newPair);
 
 
-const mk: MultikeyPair   = eddsa.JWKToMultikey(keyPair.public, keyPair.private);
-const mkPair: JWKKeyPair = utils.MultikeyPairToJWK(mk);
+const mk: MultikeyPair   = utils.JWKToMultikey(keyPair);
+const mkPair: JWKKeyPair = utils.MultikeyToJWK(mk);
 
 str(keyPair);
 str(mkPair);
 
-console.log(`Values are equal? ${keyPair.private?.x === mkPair.private?.x && keyPair?.private?.d === keyPair?.private?.d}`)
+console.log(`Values are equal? ${keyPair.secret?.x === mkPair.secret?.x && keyPair?.secret?.d === keyPair?.secret?.d}`)
 

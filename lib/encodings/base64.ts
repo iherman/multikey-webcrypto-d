@@ -21,7 +21,7 @@ const urlToBase64 = (base64Url: string): string => {
  * @param arrayBuffer 
  * @returns 
  */
-export function Uint8ArrayToBase64Url(bytes: Uint8Array): string {
+export function encode(bytes: Uint8Array): string {
     let binary: string = "";
     for (let i = 0; i < bytes.length; i++) {
         binary += String.fromCharCode(bytes[i]);
@@ -38,7 +38,7 @@ export function Uint8ArrayToBase64Url(bytes: Uint8Array): string {
  * @param string 
  * @returns 
  */
-export function base64UrlToUint8Array(url: string): Uint8Array {
+export function decode(url: string): Uint8Array {
     const base64string = urlToBase64(url);
 
     const binary = atob(base64string);
@@ -48,15 +48,4 @@ export function base64UrlToUint8Array(url: string): Uint8Array {
         byteArray[i] = binary.charCodeAt(i);
     }
     return byteArray;
-}
-
-/**
- * Convert a CryptoKey Pair to a JWK Pair
- * @param newPair 
- * @returns 
- */
-export async function toJWK(newPair: CryptoKeyPair): Promise<types.JWKKeyPair> {
-    const publicKey: JsonWebKey = await crypto.subtle.exportKey("jwk", newPair.publicKey);
-    const privateKey: JsonWebKey = await crypto.subtle.exportKey("jwk", newPair.privateKey);
-    return { public: publicKey, private: privateKey };
 }
