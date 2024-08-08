@@ -1,9 +1,17 @@
 import { JWKKeyPair, MultikeyPair, MultikeyPairBinary, Ecdsa256Preambles, Ecdsa384Preambles, CryptoKeyClasses } from "./common.ts";
+import * as secp256k1 from 'https://deno.land/x/secp256k1/mod.ts';
 
-/* @deno-types="https://www.npmjs.com/package/@types/elliptic" */
-// @deno-types="npm:@types/elliptic"
-import { ec as EC } from 'npm:elliptic';
-const ec = new EC('secp256k1');
+function hexToUint8Array(hex: string): Uint8Array {
+    if (hex.length % 2 !== 0) {
+        throw new Error("Hex string must have an even length");
+    }
+    const array = new Uint8Array(hex.length / 2);
+    for (let i = 0; i < hex.length; i += 2) {
+        array[i / 2] = parseInt(hex.substr(i, 2), 16);
+    }
+    return array;
+}
+
 
 
 /**
@@ -22,12 +30,31 @@ const ec = new EC('secp256k1');
  * @returns 
  */
 export function convertJWKCryptoValues(x: Uint8Array, d: Uint8Array | undefined, y?: Uint8Array): MultikeyPairBinary {
+    console.log(x);
+    console.log(y);
+
     if (y === undefined) {
         throw new Error("ECDSA encoding requires a 'y' value.");
     }
     // Compression means adding a new byte at the start of the 'x' value depending on the parity of 'y'
     const even = (y[y.length - 1] % 2 === 0) ? 0x02 : 0x03;
     const cx = new Uint8Array([even, ...x]);
+
+    console.log(cx);
+
+    //-----
+    // const compressedPublicKey = '02e8d8cf85e7bd4c249fd54daf9883467e87c57c000aa33d0e67dedd431e81832c';
+    // const compressedKeyArray = Uint8Array.from(hexToUint8Array(compressedPublicKey));
+
+    // const uncompressedPublicKey = secp256k1.getPublicKey(compressedKeyArray, false);
+
+
+    const ux = secp256k1.getPublicKey(d, false);
+    console.log(ux);
+
+    /** Just debugging here!!! */
+    Deno.exit();
+
     return {
         public: cx,
         secret: d
