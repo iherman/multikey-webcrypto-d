@@ -30,7 +30,7 @@ export function convertJWKCryptoValues(x: Uint8Array, d: Uint8Array | undefined,
  * constant JWK structure. The interface is there to be reused by the ECDSA equivalent, which must 
  * do some extra processing.
  * 
- * @param _cl - unused in this function, just a blaceholder
+ * @param _cl - unused in this function, just a placeholder
  * @param xb - binary version of the x value for the elliptical curve
  * @param db - binary version of the d value for the elliptical curve
  * @returns 

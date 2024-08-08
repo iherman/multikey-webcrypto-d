@@ -1,9 +1,9 @@
 import {
-    JWKKeyPair, MultikeyPair, Multikey, 
-    Preamble, EddsaPreambles, Ecdsa256Preambles, Ecdsa384Preambles,
+    JWKKeyPair, MultikeyPair, Multikey, Preamble,
     CryptoKeyClasses, CryptoKeyTypes, CryptoKeyData,
     MultikeyPairBinary,
-    classToPreamble, classToDecoder, classToEncoder, 
+    classToPreamble, classToDecoder, classToEncoder,
+    preambleToCryptoData 
 } from "./common.ts";
 
 import * as base58 from './encodings/base58/index.js';
@@ -44,7 +44,7 @@ export function MultikeyToJWK(keys: MultikeyPair): JWKKeyPair {
     };
 
     const public_binary = convertBinary(keys.publicKeyMultibase);
-    const public_data: CryptoKeyData = classifyKey(public_binary.preamble);
+    const public_data: CryptoKeyData = preambleToCryptoData(public_binary.preamble);
     if (public_data.crType !== CryptoKeyTypes.PUBLIC) {
         throw new Error(`"${keys.publicKeyMultibase}" has the wrong preamble (should refer to a public key).`);
     }
@@ -52,7 +52,7 @@ export function MultikeyToJWK(keys: MultikeyPair): JWKKeyPair {
     const converter = classToDecoder[public_data.crClass];
     if (keys.secretKeyMultibase) {
         const secret_binary = convertBinary(keys.secretKeyMultibase);
-        const secret_data: CryptoKeyData = classifyKey(secret_binary.preamble);
+        const secret_data: CryptoKeyData = preambleToCryptoData(secret_binary.preamble);
 
         if (secret_data.crClass !== public_data.crClass) {
             throw new Error(`Private and secret keys have different crypto methods`);
@@ -162,73 +162,6 @@ export function JWKToMultikey(keys: JWKKeyPair): MultikeyPair {
     return output;
 }
 
-
-/**
- * Convert a CryptoKey Pair into a JWK Pair. Not really used by these tools, but handy to have it to help debugging.
- * @param newPair 
- * @returns 
- */
-
-export async function toJWK(newPair: CryptoKeyPair): Promise<JWKKeyPair> {
-    const publicKey: JsonWebKey = await crypto.subtle.exportKey("jwk", newPair.publicKey);
-    const privateKey: JsonWebKey = await crypto.subtle.exportKey("jwk", newPair.privateKey);
-    return { public: publicKey, secret: privateKey };
-}
-
-/*************************************************************************************************/
-/*                                     Internal utilities                                        */
-/*************************************************************************************************/
-/**
- * Classify the crypto key based on the multikey preamble characters that are at the start of the code. 
- * These are two binary numbers, signalling the crypto class (ecdsa or eddsa) and, in the former case, 
- * the hash function.
- * 
- * @param preamble 
- * @returns 
- */
-function classifyKey(preamble: Preamble<number>): CryptoKeyData {
-    // Ugly but effective and simple trick to compare two arrays
-    const eq = (a: Preamble<number>, b: Preamble<number>): boolean => JSON.stringify(a) === JSON.stringify(b);
-
-    if (preamble.length !== 2) {
-        throw new Error(`${preamble} is not valid, it should have a size of exactly 2.`);
-    }
-
-    // The real classification...
-    if (eq(preamble, Ecdsa256Preambles.secret)) {
-        return {
-            crClass: CryptoKeyClasses.ECDSA_256,
-            crType: CryptoKeyTypes.PRIVATE,
-        };
-    } else if (eq(preamble, Ecdsa256Preambles.public)) {
-        return {
-            crClass: CryptoKeyClasses.ECDSA_256,
-            crType: CryptoKeyTypes.PUBLIC,
-        };
-    } else if (eq(preamble, Ecdsa384Preambles.secret)) {
-        return {
-            crClass: CryptoKeyClasses.ECDSA_384,
-            crType: CryptoKeyTypes.PRIVATE,
-        };
-    } else if (eq(preamble, Ecdsa384Preambles.public)) {
-        return {
-            crClass: CryptoKeyClasses.ECDSA_384,
-            crType: CryptoKeyTypes.PUBLIC,
-        };
-    } else if (eq(preamble, EddsaPreambles.secret)) {
-        return {
-            crClass: CryptoKeyClasses.EDDSA,
-            crType: CryptoKeyTypes.PRIVATE,
-        };
-    } else if (eq(preamble, EddsaPreambles.public)) {
-        return {
-            crClass: CryptoKeyClasses.EDDSA,
-            crType: CryptoKeyTypes.PUBLIC,
-        };
-    } else {
-        throw new Error(`${preamble} is unknown. Should refer to secret or private eddsa or ecdsa (the latter with P-256 or P-384)`);
-    }
-}
 
 
 

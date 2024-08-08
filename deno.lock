@@ -1,0 +1,75 @@
+{
+  "version": "3",
+  "packages": {
+    "specifiers": {
+      "npm:@types/elliptic": "npm:@types/elliptic@6.4.18",
+      "npm:elliptic": "npm:elliptic@6.5.5"
+    },
+    "npm": {
+      "@types/bn.js@5.1.5": {
+        "integrity": "sha512-V46N0zwKRF5Q00AZ6hWtN0T8gGmDUaUzLWQvHFo5yThtVwK/VCenFY3wXVbOvNfajEpsTfQM4IN9k/d6gUVX3A==",
+        "dependencies": {
+          "@types/node": "@types/node@18.16.19"
+        }
+      },
+      "@types/elliptic@6.4.18": {
+        "integrity": "sha512-UseG6H5vjRiNpQvrhy4VF/JXdA3V/Fp5amvveaL+fs28BZ6xIKJBPnUPRlEaZpysD9MbpfaLi8lbl7PGUAkpWw==",
+        "dependencies": {
+          "@types/bn.js": "@types/bn.js@5.1.5"
+        }
+      },
+      "@types/node@18.16.19": {
+        "integrity": "sha512-IXl7o+R9iti9eBW4Wg2hx1xQDig183jj7YLn8F7udNceyfkbn1ZxmzZXuak20gR40D7pIkIY1kYGx5VIGbaHKA==",
+        "dependencies": {}
+      },
+      "bn.js@4.12.0": {
+        "integrity": "sha512-c98Bf3tPniI+scsdk237ku1Dc3ujXQTSgyiPUDEOe7tRkhrqridvh8klBv0HCEso1OLOYcHuCv/cS6DNxKH+ZA==",
+        "dependencies": {}
+      },
+      "brorand@1.1.0": {
+        "integrity": "sha512-cKV8tMCEpQs4hK/ik71d6LrPOnpkpGBR0wzxqr68g2m/LB2GxVYQroAjMJZRVM1Y4BCjCKc3vAamxSzOY2RP+w==",
+        "dependencies": {}
+      },
+      "elliptic@6.5.5": {
+        "integrity": "sha512-7EjbcmUm17NQFu4Pmgmq2olYMj8nwMnpcddByChSUjArp8F5DQWcIcpriwO4ZToLNAJig0yiyjswfyGNje/ixw==",
+        "dependencies": {
+          "bn.js": "bn.js@4.12.0",
+          "brorand": "brorand@1.1.0",
+          "hash.js": "hash.js@1.1.7",
+          "hmac-drbg": "hmac-drbg@1.0.1",
+          "inherits": "inherits@2.0.4",
+          "minimalistic-assert": "minimalistic-assert@1.0.1",
+          "minimalistic-crypto-utils": "minimalistic-crypto-utils@1.0.1"
+        }
+      },
+      "hash.js@1.1.7": {
+        "integrity": "sha512-taOaskGt4z4SOANNseOviYDvjEJinIkRgmp7LbKP2YTTmVxWBl87s/uzK9r+44BclBSp2X7K1hqeNfz9JbBeXA==",
+        "dependencies": {
+          "inherits": "inherits@2.0.4",
+          "minimalistic-assert": "minimalistic-assert@1.0.1"
+        }
+      },
+      "hmac-drbg@1.0.1": {
+        "integrity": "sha512-Tti3gMqLdZfhOQY1Mzf/AanLiqh1WTiJgEj26ZuYQ9fbkLomzGchCws4FyrSd4VkpBfiNhaE1On+lOz894jvXg==",
+        "dependencies": {
+          "hash.js": "hash.js@1.1.7",
+          "minimalistic-assert": "minimalistic-assert@1.0.1",
+          "minimalistic-crypto-utils": "minimalistic-crypto-utils@1.0.1"
+        }
+      },
+      "inherits@2.0.4": {
+        "integrity": "sha512-k/vGaX4/Yla3WzyMCvTQOXYeIHvqOKtnqBduzTHpzpQZzAskKMhZ2K+EnBiSM9zGSoIFeMpXKxa4dYeZIQqewQ==",
+        "dependencies": {}
+      },
+      "minimalistic-assert@1.0.1": {
+        "integrity": "sha512-UtJcAD4yEaGtjPezWuO9wC4nwUnVH/8/Im3yEHQP4b67cXlD/Qr9hdITCU1xDbSEXg2XKNaP8jsReV7vQd00/A==",
+        "dependencies": {}
+      },
+      "minimalistic-crypto-utils@1.0.1": {
+        "integrity": "sha512-JIYlbt6g8i5jKfJ3xz7rF0LXmv2TkDxBLUkiBeZ7bAx4GnnNMr8xFpGnOxn6GhTEHx3SjRrZEoU+j04prX1ktg==",
+        "dependencies": {}
+      }
+    }
+  },
+  "remote": {}
+}
