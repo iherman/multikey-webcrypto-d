@@ -22,8 +22,7 @@ async function toJWK(newPair: CryptoKeyPair): Promise<JWKKeyPair> {
 
 
 // generate an eddsa key
-// const newPair: CryptoKeyPair = await crypto.subtle.generateKey({name: "Ed25519"}, true, ["sign", "verify"]) as CryptoKeyPair;
-const newPair: CryptoKeyPair = await crypto.subtle.generateKey({name: "ECDSA", namedCurve: "P-256"}, true, ["sign", "verify"]) as CryptoKeyPair;
+const newPair: CryptoKeyPair = await crypto.subtle.generateKey({name: "Ed25519"}, true, ["sign", "verify"]) as CryptoKeyPair;
 const keyPair: JWKKeyPair = await toJWK(newPair);
 
 
