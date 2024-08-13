@@ -1,5 +1,6 @@
 {
   "tasks": {
-    "run": "deno run tests/roundtrip.ts"
+    "run": "deno run tests/roundtrip.ts",
+    "doc": "deno doc --html index.ts"
   }
 }

@@ -29,12 +29,12 @@ export function MultikeyToJWK(keys: MultikeyPair | Multikey): JWKKeyPair | JsonW
  * Convert JWK Key pair to Multikeys. This function decodes the JWK keys, finds out which binary key it encodes
  * and converts the key to the multikey versions depending on the exact curve.
  * 
- * Note that the code does not check (yet?) all combination of the JWK pairs where they would be erroneous, only
- * those that would lead to error in this cose. E.g., it does not check whether the x (and possibly y) values
+ * Note that the code does not check (yet?) all combination of the JWK pairs and fields for possible errors, only
+ * those that would lead to error in this package. E.g., it does not check whether the x (and possibly y) values
  * are identical in the secret and private JWK keys.
  * 
  * Works for ecdsa (both P-384 and P-256), and eddsa.
-
+ *
  * @param keys 
  * @throws - exceptions if something is incorrect in the incoming data
  */
