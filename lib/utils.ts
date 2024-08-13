@@ -30,6 +30,7 @@ interface MultikeyData {
  * @throws - exceptions if something is incorrect in the incoming data
  */
 export function MultikeyToJWK(keys: MultikeyPair): JWKKeyPair {
+    // Separate the preamble of a multikey from the key value
     const convertBinary = (key: Multikey): MultikeyData => {
         // Check whether the first character is a 'z' before removing it
         if (key[0] === 'z') {
@@ -50,6 +51,9 @@ export function MultikeyToJWK(keys: MultikeyPair): JWKKeyPair {
     }
 
     const converter = classToDecoder[public_data.crClass];
+
+    // We have to repeat the previous steps for a secret key, if applicable, before converting the result into a JWK pair,
+    // A check is made on the fly to see that the keys are compatible in terms of crypto methods
     if (keys.secretKeyMultibase) {
         const secret_binary = convertBinary(keys.secretKeyMultibase);
         const secret_data: CryptoKeyData = preambleToCryptoData(secret_binary.preamble);
@@ -108,7 +112,7 @@ export function JWKToMultikey(keys: JWKKeyPair): MultikeyPair {
                 if (key.crv === "Ed25519") {
                     return CryptoKeyClasses.EDDSA
                 } else {
-                    throw new Error(`Unknown crv value for an eddsa key (${key.crv})`)
+                    throw new Error(`Unknown crv value for an OKP key (${key.crv})`)
                 }
             } else {
                 throw new Error(`Unknown kty value for a key (${key.kty})`)
@@ -116,11 +120,11 @@ export function JWKToMultikey(keys: JWKKeyPair): MultikeyPair {
         } else {
             throw new Error(`No kty value for the key (${JSON.stringify(key)})`)
         }
-    }
+    };
 
     const public_key_class = keyClass(keys.public);
 
-    // The secret key class is calculated just for checking; the two must be identical...
+    // The secret key class is calculated, but this is just for checking; the two must be identical...
     if (keys.secret !== undefined) {
         const secret_key_class = keyClass(keys.secret);
         if (public_key_class !== secret_key_class) {
@@ -137,22 +141,21 @@ export function JWKToMultikey(keys: JWKKeyPair): MultikeyPair {
     }
  
     const y: Uint8Array | undefined = convertJWKField(keys.public.y);
-    if (public_key_class !== CryptoKeyClasses.EDDSA && y === undefined) {
-        throw new Error(`x value is missing from public key  (${JSON.stringify(keys.public)})`);
+    if ((public_key_class === CryptoKeyClasses.ECDSA_256 || public_key_class === CryptoKeyClasses.ECDSA_384) && y === undefined) {
+        throw new Error(`y value is missing from public key for ECDSA  (${JSON.stringify(keys.public)})`);
     }
 
     const d: Uint8Array | undefined = (keys.secret) ? convertJWKField(keys.secret.d) : undefined;
     if (keys.secret && d === undefined) {
-        throw new Error(`d value is missing from private key  (${JSON.stringify(key)})`);
+        throw new Error(`d value is missing from private key  (${JSON.stringify(keys)})`);
     }
 
     const converter = classToEncoder[public_key_class]
-    const final_binary: MultikeyPairBinary = converter(x, d, y);
+    const final_binary: MultikeyPairBinary = converter(public_key_class, x, d, y);
 
     // We have the binary version of the multikey values, this must be converted into real multikey.
     // This means adding a preamble and convert to base58.
     const preambles = classToPreamble[public_key_class];
-
     const output: MultikeyPair = {
         publicKeyMultibase : convertMultikey(final_binary.public, preambles.public)
     }

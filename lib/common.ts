@@ -74,7 +74,7 @@ export type ClassToDecoder = {
 }
 
 export type ClassToEncoder = {
-    [key in CryptoKeyClasses]: (x: Uint8Array, d: Uint8Array | undefined, _y?: Uint8Array) => MultikeyPairBinary
+    [key in CryptoKeyClasses]: (key_class: CryptoKeyClasses, x: Uint8Array, d: Uint8Array | undefined, _y?: Uint8Array) => MultikeyPairBinary
 }
 
 /**
@@ -90,7 +90,7 @@ export const classToPreamble: ClassToPreamble = {
  * Mapping to decoder, ie, decoding the Multicode values to JWK
  */
 export const classToDecoder: ClassToDecoder = {
-    [CryptoKeyClasses.EDDSA]: eddsa.convertCryptoToJWK,
+    [CryptoKeyClasses.EDDSA]:     eddsa.convertCryptoToJWK,
     [CryptoKeyClasses.ECDSA_256]: ecdsa.convertCryptoToJWK,
     [CryptoKeyClasses.ECDSA_384]: ecdsa.convertCryptoToJWK,
 };
@@ -99,7 +99,7 @@ export const classToDecoder: ClassToDecoder = {
  * Mapping to encoders, ie, encoding the JWK values to Multicode
  */
 export const classToEncoder: ClassToEncoder = {
-    [CryptoKeyClasses.EDDSA]: eddsa.convertJWKCryptoValues,
+    [CryptoKeyClasses.EDDSA]:     eddsa.convertJWKCryptoValues,
     [CryptoKeyClasses.ECDSA_256]: ecdsa.convertJWKCryptoValues,
     [CryptoKeyClasses.ECDSA_384]: ecdsa.convertJWKCryptoValues,
 };

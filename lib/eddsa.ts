@@ -1,6 +1,5 @@
-import { JWKKeyPair, MultikeyPairBinary } from "./common.ts";
-import * as base64                        from "./encodings/base64.ts";
-import { CryptoKeyClasses }               from './common.ts';
+import { JWKKeyPair, MultikeyPairBinary, CryptoKeyClasses } from "./common.ts";
+import * as base64                                          from "./encodings/base64.ts";
 
 
 /**
@@ -10,12 +9,13 @@ import { CryptoKeyClasses }               from './common.ts';
  * For EDDSA, this is essentially, an empty function, which simply returns the `x` and `d` values. The
  * interface is there to be reused by the ECDSA equivalent, which must do some extra processing.
  * 
- * @param x - x value for the elliptical curve
- * @param d - d (private) value for the elliptical curve
+ * @param _cl - unused in this function, just a placeholder
+ * @param x - x value for the elliptical curve, as extracted from JWK
+ * @param d - d (private) value for the elliptical curve, as extracted from JWK
  * @param _y - unused in this function, just a placeholder
  * @returns 
  */
-export function convertJWKCryptoValues(x: Uint8Array, d: Uint8Array | undefined, _y?: Uint8Array): MultikeyPairBinary {
+export function convertJWKCryptoValues(_cl: CryptoKeyClasses, x: Uint8Array, d: Uint8Array | undefined, _y?: Uint8Array): MultikeyPairBinary {
     return {
         public: x,
         secret: d

@@ -2,10 +2,22 @@
   "version": "3",
   "packages": {
     "specifiers": {
+      "npm:@noble/curves": "npm:@noble/curves@1.5.0",
       "npm:@types/elliptic": "npm:@types/elliptic@6.4.18",
-      "npm:elliptic": "npm:elliptic@6.5.5"
+      "npm:elliptic": "npm:elliptic@6.5.5",
+      "npm:elliptic@6.5.4": "npm:elliptic@6.5.4"
     },
     "npm": {
+      "@noble/curves@1.5.0": {
+        "integrity": "sha512-J5EKamIHnKPyClwVrzmaf5wSdQXgdHcPZIZLu3bwnbeCx8/7NPK5q2ZBWF+5FvYGByjiQQsJYX6jfgB2wDPn3A==",
+        "dependencies": {
+          "@noble/hashes": "@noble/hashes@1.4.0"
+        }
+      },
+      "@noble/hashes@1.4.0": {
+        "integrity": "sha512-V1JJ1WTRUqHHrOSh597hURcMqVKVGL/ea3kv0gSnEdsEZ0/+VyPghM1lMNGc00z7CIQorSvbKpuJkxvuHbvdbg==",
+        "dependencies": {}
+      },
       "@types/bn.js@5.1.5": {
         "integrity": "sha512-V46N0zwKRF5Q00AZ6hWtN0T8gGmDUaUzLWQvHFo5yThtVwK/VCenFY3wXVbOvNfajEpsTfQM4IN9k/d6gUVX3A==",
         "dependencies": {
@@ -29,6 +41,18 @@
       "brorand@1.1.0": {
         "integrity": "sha512-cKV8tMCEpQs4hK/ik71d6LrPOnpkpGBR0wzxqr68g2m/LB2GxVYQroAjMJZRVM1Y4BCjCKc3vAamxSzOY2RP+w==",
         "dependencies": {}
+      },
+      "elliptic@6.5.4": {
+        "integrity": "sha512-iLhC6ULemrljPZb+QutR5TQGB+pdW6KGD5RSegS+8sorOZT+rdQFbsQFJgvN3eRqNALqJer4oQ16YvJHlU8hzQ==",
+        "dependencies": {
+          "bn.js": "bn.js@4.12.0",
+          "brorand": "brorand@1.1.0",
+          "hash.js": "hash.js@1.1.7",
+          "hmac-drbg": "hmac-drbg@1.0.1",
+          "inherits": "inherits@2.0.4",
+          "minimalistic-assert": "minimalistic-assert@1.0.1",
+          "minimalistic-crypto-utils": "minimalistic-crypto-utils@1.0.1"
+        }
       },
       "elliptic@6.5.5": {
         "integrity": "sha512-7EjbcmUm17NQFu4Pmgmq2olYMj8nwMnpcddByChSUjArp8F5DQWcIcpriwO4ZToLNAJig0yiyjswfyGNje/ixw==",
@@ -71,5 +95,11 @@
       }
     }
   },
-  "remote": {}
+  "redirects": {
+    "https://deno.land/x/elliptic/mod.ts": "https://deno.land/x/elliptic@0.1.0/mod.ts"
+  },
+  "remote": {
+    "https://deno.land/x/elliptic@0.1.0/mod.ts": "d3acf0a260a2232e791553b17b8df6c4a3475afad5313fd3bbeab6d142fde41d",
+    "https://deno.land/x/elliptic@0.1.0/src/elliptic.js": "e68501f65fe876d8ecea92bb9874777e254859493562b199e1eaba33e1b82249"
+  }
 }
