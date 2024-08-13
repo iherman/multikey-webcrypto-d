@@ -1,6 +1,11 @@
 {
+  "name": "Multikeys-JWK",
+  "version": "0.5.0",
+  "description": "Conversion to and from Multikey format from JWK for the three EC curves that are defined for Verifiable Credentials.",
   "tasks": {
-    "run": "deno run tests/roundtrip.ts",
-    "doc": "deno doc --html index.ts"
-  }
+    "run": "deno run tests/roundtrip.ts"
+  },
+  "author": "Ivan Herman <ivan@w3.org> (https://www.w3.org/People/Ivan/)",
+  "license": "W3C-20150513",
+  "main": "index.ts"
 }

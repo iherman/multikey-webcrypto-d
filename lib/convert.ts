@@ -31,7 +31,7 @@ import * as base64 from "./encodings/base64.ts";
  * @returns 
  * @throws - exceptions if something is incorrect in the incoming data
  */
-export function MultikeyToJWK(keys: MultikeyPair): JWKKeyPair {
+export function multikeyToJWK(keys: MultikeyPair): JWKKeyPair {
     // Separate the preamble from the real binary key value.
     interface MultikeyData {
         preamble:  Preamble<number>,

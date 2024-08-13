@@ -1,4 +1,12 @@
-import * as convert                                                         from "./lib/convert.ts";
+/**
+ * Conversion to and from [Multikey format](https://www.w3.org/TR/controller-document/#multikey) from
+ * JWK for the three EC curves that are defined for Verifiable Credentials: [ECDSA with P-256 and P-384](https://www.w3.org/TR/vc-di-ecdsa/#multikey) 
+ * and [EDDSA](https://www.w3.org/TR/vc-di-eddsa/#multikey).
+ * 
+ * @package
+ */
+
+import * as convert                                                         from './lib/convert.ts';
 import { JWKKeyPair, MultikeyPair, Multikey, isJWKKeyPair, isMultikeyPair } from './lib/common.ts';
 export type { JWKKeyPair, MultikeyPair, Multikey }                          from './lib/common.ts';
 
@@ -13,11 +21,11 @@ export type { JWKKeyPair, MultikeyPair, Multikey }                          from
  * @param keys 
  * @throws - exceptions if something is incorrect in the incoming data
  */
-export function MultikeyToJWK(keys: Multikey): JsonWebKey;
-export function MultikeyToJWK(keys: MultikeyPair): JWKKeyPair;
-export function MultikeyToJWK(keys: MultikeyPair | Multikey): JWKKeyPair | JsonWebKey {
+export function multikeyToJWK(keys: Multikey): JsonWebKey;
+export function multikeyToJWK(keys: MultikeyPair): JWKKeyPair;
+export function multikeyToJWK(keys: MultikeyPair | Multikey): JWKKeyPair | JsonWebKey {
     const input: MultikeyPair = isMultikeyPair(keys) ? keys as MultikeyPair : { publicKeyMultibase: keys };
-    const jwk_keys = convert.MultikeyToJWK(input);
+    const jwk_keys = convert.multikeyToJWK(input);
     if (isMultikeyPair(keys)) {
         return jwk_keys;
     } else {
