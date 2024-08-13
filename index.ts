@@ -1,4 +1,4 @@
-import * as utils from "./lib/utils.ts";
+import * as convert                                                         from "./lib/convert.ts";
 import { JWKKeyPair, MultikeyPair, Multikey, isJWKKeyPair, isMultikeyPair } from './lib/common.ts';
 export type { JWKKeyPair, MultikeyPair, Multikey }                          from './lib/common.ts';
 
@@ -16,8 +16,8 @@ export type { JWKKeyPair, MultikeyPair, Multikey }                          from
 export function MultikeyToJWK(keys: Multikey): JsonWebKey;
 export function MultikeyToJWK(keys: MultikeyPair): JWKKeyPair;
 export function MultikeyToJWK(keys: MultikeyPair | Multikey): JWKKeyPair | JsonWebKey {
-    const input: MultikeyPair = isMultikeyPair(keys) ? keys as MultikeyPair : {publicKeyMultibase: keys};
-    const jwk_keys = utils.MultikeyToJWK(input);
+    const input: MultikeyPair = isMultikeyPair(keys) ? keys as MultikeyPair : { publicKeyMultibase: keys };
+    const jwk_keys = convert.MultikeyToJWK(input);
     if (isMultikeyPair(keys)) {
         return jwk_keys;
     } else {
@@ -42,7 +42,7 @@ export function JWKToMultikey(keys: JsonWebKey): Multikey;
 export function JWKToMultikey(keys: JWKKeyPair): MultikeyPair;
 export function JWKToMultikey(keys: JWKKeyPair | JsonWebKey): MultikeyPair | Multikey {
     const input: JWKKeyPair = isJWKKeyPair(keys) ? keys : {public: keys};
-    const m_keys = utils.JWKToMultikey(input);
+    const m_keys = convert.JWKToMultikey(input);
     if (isJWKKeyPair(keys)) {
         return m_keys;
     } else {

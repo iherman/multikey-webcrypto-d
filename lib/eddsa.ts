@@ -1,6 +1,11 @@
-import { JWKKeyPair, MultikeyPairBinary, CryptoKeyClasses } from "./common.ts";
-import * as base64                                          from "./encodings/base64.ts";
-
+/**
+ * Base conversion functions for EDDSA. The functions are straightforward, but the interfaces are made so that
+ * they coincide with the companion functions in ECDSA.
+ * 
+ * @module
+ */
+import { JWKKeyPair, MultikeyPairBinary, CryptoCurves } from "./common.ts";
+import * as base64                                      from "./encodings/base64.ts";
 
 /**
  * Convert the Crypto values from JWK to the equivalent Multikey Pairs' binary data. 
@@ -15,10 +20,10 @@ import * as base64                                          from "./encodings/ba
  * @param _y - unused in this function, just a placeholder
  * @returns 
  */
-export function convertJWKCryptoValues(_cl: CryptoKeyClasses, x: Uint8Array, d: Uint8Array | undefined, _y?: Uint8Array): MultikeyPairBinary {
+export function JWKToMultikeyBinary(_cl: CryptoCurves, x: Uint8Array, d: Uint8Array | undefined, _y?: Uint8Array): MultikeyPairBinary {
     return {
         public: x,
-        secret: d
+        secret: d,
     }
 }
 
@@ -35,8 +40,7 @@ export function convertJWKCryptoValues(_cl: CryptoKeyClasses, x: Uint8Array, d: 
  * @param db - binary version of the d value for the elliptical curve
  * @returns 
  */
-
-export function convertCryptoToJWK(_cl: CryptoKeyClasses, xb: Uint8Array, db?: Uint8Array): JWKKeyPair {
+export function multikeyBinaryToJWK(_cl: CryptoCurves, xb: Uint8Array, db?: Uint8Array): JWKKeyPair {
     const x = base64.encode(xb);
     const output: JWKKeyPair = {
         public: {
