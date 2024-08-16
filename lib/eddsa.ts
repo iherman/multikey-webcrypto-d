@@ -4,8 +4,8 @@
  * 
  * @module
  */
-import { JWKKeyPair, MultikeyPairBinary, CryptoCurves } from "./common.ts";
-import * as base64                                      from "./encodings/base64.ts";
+import { JWKKeyPair, MultikeyBinary, CryptoCurves } from "./common";
+import * as base64                                  from "./encodings/base64";
 
 /**
  * Convert the Crypto values from JWK to the equivalent Multikey Pairs' binary data. 
@@ -14,13 +14,13 @@ import * as base64                                      from "./encodings/base64
  * For EDDSA, this is essentially, an empty function, which simply returns the `x` and `d` values. The
  * interface is there to be reused by the ECDSA equivalent, which must do some extra processing.
  * 
- * @param _cl - unused in this function, just a placeholder
+ * @param _curve - unused in this function, just a placeholder
  * @param x - x value for the elliptical curve, as extracted from JWK
  * @param d - d (private) value for the elliptical curve, as extracted from JWK
  * @param _y - unused in this function, just a placeholder
  * @returns 
  */
-export function JWKToMultikeyBinary(_cl: CryptoCurves, x: Uint8Array, d: Uint8Array | undefined, _y?: Uint8Array): MultikeyPairBinary {
+export function JWKToMultikeyBinary(_curve: CryptoCurves, x: Uint8Array, d: Uint8Array | undefined, _y?: Uint8Array): MultikeyBinary {
     return {
         public: x,
         secret: d,
@@ -35,12 +35,12 @@ export function JWKToMultikeyBinary(_cl: CryptoCurves, x: Uint8Array, d: Uint8Ar
  * constant JWK structure. The interface is there to be reused by the ECDSA equivalent, which must 
  * do some extra processing.
  * 
- * @param _cl - unused in this function, just a placeholder
+ * @param _curve - unused in this function, just a placeholder
  * @param xb - binary version of the x value for the elliptical curve
  * @param db - binary version of the d value for the elliptical curve
  * @returns 
  */
-export function multikeyBinaryToJWK(_cl: CryptoCurves, xb: Uint8Array, db?: Uint8Array): JWKKeyPair {
+export function multikeyBinaryToJWK(_curve: CryptoCurves, xb: Uint8Array, db?: Uint8Array): JWKKeyPair {
     const x = base64.encode(xb);
     const output: JWKKeyPair = {
         public: {

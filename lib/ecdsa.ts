@@ -8,8 +8,8 @@
  * @module
  */
 
-import { JWKKeyPair, MultikeyPairBinary, CryptoCurves } from "./common.ts";
-import * as base64                                      from "./encodings/base64.ts";
+import { JWKKeyPair, MultikeyBinary, CryptoCurves } from "./common";
+import * as base64                                  from "./encodings/base64";
 
 /**
  * Convert the Crypto values from JWK to the equivalent Multikey Pairs' binary data. 
@@ -21,19 +21,19 @@ import * as base64                                      from "./encodings/base64
  * (The y value is set as optional in the signature but that is only to make TypeScript happy. A missing
  * value generates an error)
  * 
- * @param cl - choice between P-256 and P-384
+ * @param curve - choice between P-256 and P-384
  * @param x - x value for the elliptical curve
  * @param d - d (private) value for the elliptical curve
  * @param y - y value for the elliptical curve
  * @returns 
  */
-export function JWKToMultikeyBinary(cl: CryptoCurves, x: Uint8Array, d: Uint8Array | undefined, y?: Uint8Array): MultikeyPairBinary {
+export function JWKToMultikeyBinary(curve: CryptoCurves, x: Uint8Array, d: Uint8Array | undefined, y?: Uint8Array): MultikeyBinary {
     if (y === undefined) {
         throw new Error("ECDSA encoding requires a 'y' value.");
     }
 
     return {
-        public: compressPublicKey(cl, x, y),
+        public: compressPublicKey(curve, x, y),
         secret: d
     };
 }
@@ -46,21 +46,21 @@ export function JWKToMultikeyBinary(cl: CryptoCurves, x: Uint8Array, d: Uint8Arr
  * constant JWK structure. The interface is there to be reused by the ECDSA equivalent, which must 
  * do some extra processing.
  * 
- * @param cl - choice between P-256 and P-384
+ * @param curve - choice between P-256 and P-384
  * @param xb - binary version of the x value for the elliptical curve
  * @param db - binary version of the d value for the elliptical curve
  * @returns 
  */
-export function multikeyBinaryToJWK(cl: CryptoCurves, xb: Uint8Array, db?: Uint8Array): JWKKeyPair {
+export function multikeyBinaryToJWK(curve: CryptoCurves, xb: Uint8Array, db?: Uint8Array): JWKKeyPair {
     // The extra complication with ECDSA: the multikey is the compressed 'x' value, the 'y' value
     // must be calculated.
-    const uncompressed = uncompressPublicKey(cl, xb);
+    const uncompressed = uncompressPublicKey(curve, xb);
     const x = base64.encode(uncompressed.x);
     const y = base64.encode(uncompressed.y);
     const output: JWKKeyPair = {
         public: {
             kty: "EC",
-            crv: (cl === CryptoCurves.ECDSA_256) ? "P-256" : "P-384",
+            crv: (curve === CryptoCurves.ECDSA_256) ? "P-256" : "P-384",
             x,
             y,
             key_ops: [
@@ -72,7 +72,7 @@ export function multikeyBinaryToJWK(cl: CryptoCurves, xb: Uint8Array, db?: Uint8
     if (db !== undefined) {
         output.secret = {
             kty: "EC",
-            crv: (cl === CryptoCurves.ECDSA_256) ? "P-256" : "P-384",
+            crv: (curve === CryptoCurves.ECDSA_256) ? "P-256" : "P-384",
             x,
             y,
             d : base64.encode(db),
@@ -93,8 +93,8 @@ export function multikeyBinaryToJWK(cl: CryptoCurves, xb: Uint8Array, db?: Uint8
  *  
 *************************************************************************/
 
-import { p384 } from 'npm:@noble/curves/p384';
-import { p256 } from 'npm:@noble/curves/p256';
+import { p384 } from '@noble/curves/p384';
+import { p256 } from '@noble/curves/p256';
 
 // Utility function to convert Uint8Array to hex string
 function uint8ArrayToHex(uint8Array: Uint8Array): string {

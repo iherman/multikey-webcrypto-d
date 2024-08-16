@@ -101,5 +101,10 @@
   "remote": {
     "https://deno.land/x/elliptic@0.1.0/mod.ts": "d3acf0a260a2232e791553b17b8df6c4a3475afad5313fd3bbeab6d142fde41d",
     "https://deno.land/x/elliptic@0.1.0/src/elliptic.js": "e68501f65fe876d8ecea92bb9874777e254859493562b199e1eaba33e1b82249"
+  },
+  "workspace": {
+    "dependencies": [
+      "npm:@noble/curves"
+    ]
   }
 }

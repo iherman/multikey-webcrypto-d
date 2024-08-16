@@ -5,16 +5,16 @@
  */
 
 import {
-    JWKKeyPair, MultikeyPair, Multikey, Preamble,
+    JWKKeyPair, Multikey, Multibase, Preamble,
     CryptoCurves, CryptoKeyTypes, CryptoKeyData,
     ECDSACurves,
-    MultikeyPairBinary,
+    MultikeyBinary,
     classToPreamble, classToDecoder, classToEncoder,
     preambleToCryptoData 
-} from "./common.ts";
+} from "./common";
 
-import * as base58 from './encodings/base58/index.js';
-import * as base64 from "./encodings/base64.ts";
+import * as base58 from './encodings/base58/index';
+import * as base64 from "./encodings/base64";
 
 /****************************************************************************************/
 /* The real converter functions                                                         */
@@ -22,8 +22,7 @@ import * as base64 from "./encodings/base64.ts";
 /**
  * Generic function to convert a multikey pair to JWK. This function decodes the multikey data
  * into a binary buffer, checks the preambles and invokes the crypto curve specific converter functions 
- * (depending on the preamble values) that do the final
- * conversion from the binary data to JWK.
+ * (depending on the preamble values) that do the final conversion from the binary data to JWK.
  * 
  * Works for ecdsa (both P-384 and P-256), and eddsa.
  * 
@@ -31,7 +30,7 @@ import * as base64 from "./encodings/base64.ts";
  * @returns 
  * @throws - exceptions if something is incorrect in the incoming data
  */
-export function multikeyToJWK(keys: MultikeyPair): JWKKeyPair {
+export function multikeyToJWK(keys: Multikey): JWKKeyPair {
     // Separate the preamble from the real binary key value.
     interface MultikeyData {
         preamble:  Preamble<number>,
@@ -39,7 +38,7 @@ export function multikeyToJWK(keys: MultikeyPair): JWKKeyPair {
     }
     // Separate the preamble of a multikey from the key value. By doing so, 
     // the initial 'z' value is also removed.
-    const convertBinary = (key: Multikey): MultikeyData => {
+    const convertBinary = (key: Multibase): MultikeyData => {
         // Check whether the first character is a 'z' before removing it
         if (key[0] === 'z') {
             const unencoded_key: Uint8Array = base58.decode(key.slice(1));
@@ -96,7 +95,7 @@ export function multikeyToJWK(keys: MultikeyPair): JWKKeyPair {
 
  * @param keys 
  */
-export function JWKToMultikey(keys: JWKKeyPair): MultikeyPair {
+export function JWKToMultikey(keys: JWKKeyPair): Multikey {
     // Internal function for the common last step of encoding a multikey
     const encodeMultikey = (val: Uint8Array, preamble: Preamble<number>): string => {
         const val_mk = new Uint8Array([...preamble, ...val]);
@@ -164,12 +163,12 @@ export function JWKToMultikey(keys: JWKKeyPair): MultikeyPair {
     }
 
     const converter = classToEncoder[publicKeyCurve]
-    const finalBinary: MultikeyPairBinary = converter(publicKeyCurve, x, d, y);
+    const finalBinary: MultikeyBinary = converter(publicKeyCurve, x, d, y);
 
     // We have the binary version of the multikey values, this must be converted into real multikey.
     // This means adding a preamble and convert to base58.
     const preambles = classToPreamble[publicKeyCurve];
-    const output: MultikeyPair = {
+    const output: Multikey = {
         publicKeyMultibase : encodeMultikey(finalBinary.public, preambles.public)
     }
     if (finalBinary.secret !== undefined) {
