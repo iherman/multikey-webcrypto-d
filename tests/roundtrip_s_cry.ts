@@ -11,11 +11,8 @@ export function str(inp: any): void {
 }
 
 /**
- * Convert a CryptoKey Pair into a JWK Pair. Not really used by these tools, but handy to have it to help debugging.
- * @param newPair 
- * @returns 
+ * Test: Convert fresh public CryptoKeys into Multikey and back; the crypto values should be identical.
  */
-
 async function main(): Promise<void> {
     const onePair = async (label: string, key: CryptoKey): Promise<void> => {
         // Do a round-trip

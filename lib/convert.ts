@@ -134,11 +134,11 @@ export function JWKToMultikey(keys: JWKKeyPair): Multikey {
         }
     };
 
-    const publicKeyCurve = keyCurve(keys.public);
+    const publicKeyCurve = keyCurve(keys.publicKey);
 
     // The secret key class is calculated, but this is just for checking; the two must be identical...
-    if (keys.secret !== undefined) {
-        const secretKeyCurve = keyCurve(keys.secret);
+    if (keys.privateKey !== undefined) {
+        const secretKeyCurve = keyCurve(keys.privateKey);
         if (publicKeyCurve !== secretKeyCurve) {
             throw new Error(`Public and private keys refer to different EC curves (${JSON.stringify(keys)})`);
         }
@@ -147,18 +147,18 @@ export function JWKToMultikey(keys: JWKKeyPair): Multikey {
     // The cryptokey values are x, y (for ecdsa), and d (for the secret key).
     // Each of these are base 64 encoded strings; what we need is the 
     // binary versions thereof.
-    const x: Uint8Array | undefined = decodeJWKField(keys.public.x);
+    const x: Uint8Array | undefined = decodeJWKField(keys.publicKey.x);
     if (x === undefined) {
-        throw new Error(`x value is missing from public key (${JSON.stringify(keys.public)})`);
+        throw new Error(`x value is missing from public key (${JSON.stringify(keys.publicKey)})`);
     }
  
-    const y: Uint8Array | undefined = decodeJWKField(keys.public.y);
+    const y: Uint8Array | undefined = decodeJWKField(keys.publicKey.y);
     if (ECDSACurves.includes(publicKeyCurve) && y === undefined) {
-        throw new Error(`y value is missing from the ECDSA public key (${JSON.stringify(keys.public)})`);
+        throw new Error(`y value is missing from the ECDSA public key (${JSON.stringify(keys.publicKey)})`);
     }
 
-    const d: Uint8Array | undefined = (keys.secret) ? decodeJWKField(keys.secret.d) : undefined;
-    if (keys.secret && d === undefined) {
+    const d: Uint8Array | undefined = (keys.privateKey) ? decodeJWKField(keys.privateKey.d) : undefined;
+    if (keys.privateKey && d === undefined) {
         throw new Error(`d value is missing from private key  (${JSON.stringify(keys)})`);
     }
 

@@ -9,7 +9,7 @@ export function str(inp: any): void {
 }
 
 /**
- * Convert a CryptoKey Pair into a JWK Pair. Not really used by these tools, but handy to have it to help debugging.
+ * Convert a CryptoKey Pair into a JWK Pair.
  * @param newPair 
  * @returns 
  */
@@ -17,9 +17,12 @@ export function str(inp: any): void {
 async function toJWK(newPair: CryptoKeyPair): Promise<JWKKeyPair> {
     const publicKey: JsonWebKey = await crypto.subtle.exportKey("jwk", newPair.publicKey);
     const privateKey: JsonWebKey = await crypto.subtle.exportKey("jwk", newPair.privateKey);
-    return { public: publicKey, secret: privateKey };
+    return { publicKey: publicKey, privateKey: privateKey };
 }
 
+/**
+ * Test: Convert fresh JWK key pairs into Multikey pairs and back; the crypto values should be identical.
+ */
 async function main(): Promise<void> {
     const onePair = async (label: string, pair: CryptoKeyPair): Promise<void> => {
         const keyPair: JWKKeyPair = await toJWK(pair);
@@ -33,9 +36,9 @@ async function main(): Promise<void> {
         str(mkPair);
 
         if (label === "EDDSA") {
-            console.log(`Values are equal? ${keyPair.secret?.x === mkPair.secret?.x && keyPair?.secret?.d === keyPair?.secret?.d}`)
+            console.log(`Values are equal? ${keyPair.privateKey?.x === mkPair.privateKey?.x && keyPair?.privateKey?.d === keyPair?.privateKey?.d}`)
         } else {
-            console.log(`Values are equal? ${keyPair.secret?.x === mkPair.secret?.x && keyPair.secret?.y === mkPair.secret?.y && keyPair?.secret?.d === keyPair?.secret?.d}`)
+            console.log(`Values are equal? ${keyPair.privateKey?.x === mkPair.privateKey?.x && keyPair.privateKey?.y === mkPair.privateKey?.y && keyPair?.privateKey?.d === keyPair?.privateKey?.d}`)
         }
     }
 

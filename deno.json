@@ -1,7 +1,8 @@
 {
-  "name": "Multikeys-JWK",
+  "name": "@multikey-webcrypto-d",
   "version": "0.5.0",
-  "description": "Conversion to and from Multikey format from JWK for the three EC curves that are defined for Verifiable Credentials.",
+  "date": "2024-08-25",
+  "description": "Conversions to and from multikeys and WebCrypto, using the three EC curves that are defined for Verifiable Credentials.",
   "tasks": {
     "test_jwk"  : "deno run tests/roundtrip_jwk.ts",
     "test_s_jwk": "deno run tests/roundtrip_s_jwk.ts",

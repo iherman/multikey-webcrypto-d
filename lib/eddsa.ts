@@ -43,7 +43,7 @@ export function JWKToMultikeyBinary(_curve: CryptoCurves, x: Uint8Array, d: Uint
 export function multikeyBinaryToJWK(_curve: CryptoCurves, xb: Uint8Array, db?: Uint8Array): JWKKeyPair {
     const x = base64.encode(xb);
     const output: JWKKeyPair = {
-        public: {
+        publicKey: {
             kty: "OKP",
             crv: "Ed25519",
             x,
@@ -55,7 +55,7 @@ export function multikeyBinaryToJWK(_curve: CryptoCurves, xb: Uint8Array, db?: U
     };
 
     if (db !== undefined) {
-        output.secret = {
+        output.privateKey = {
             kty: "OKP",
             crv: "Ed25519",
             x,

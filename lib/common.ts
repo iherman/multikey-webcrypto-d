@@ -10,8 +10,8 @@ import * as ecdsa from "./ecdsa";
  * Public/secret pair of JWK instances
  */
 export interface JWKKeyPair {
-    public: JsonWebKey;
-    secret?: JsonWebKey;
+    publicKey: JsonWebKey;
+    privateKey?: JsonWebKey;
 }
 
 /** 
@@ -43,7 +43,7 @@ export interface MultikeyBinary {
 /************************************************************************* */
 
 /**
- * Names for the various crypto curve
+ * Names for the various crypto curves
  */
 export enum CryptoCurves {
     ECDSA_384 = "secp384r1",
@@ -159,7 +159,7 @@ export const classToEncoder: ClassToEncoder = {
 export const ECDSACurves: CryptoCurves[] = [CryptoCurves.ECDSA_256, CryptoCurves.ECDSA_384];
 
 /**
- * This is an internal type, used for the implementation: return the crypto curve and type from a preamble.
+ * This is an internal type, used for the implementation: return the crypto curve and type from a multikey preamble.
  * 
  * So far, I have not yet found a way to encode that in a simple table, hence the separate function.
  */

@@ -8,12 +8,10 @@ export function str(inp: any): void {
     console.log(JSON.stringify(inp, null, 4));
 }
 
-/**
- * Convert a CryptoKey Pair into a JWK Pair. Not really used by these tools, but handy to have it to help debugging.
- * @param newPair 
- * @returns 
- */
 
+/**
+ * Test: Convert fresh JWK public key into Multikey and back; the crypto values should be identical.
+ */
 async function main(): Promise<void> {
     const onePair = async (label: string, key: CryptoKey): Promise<void> => {
         const key_jwk: JsonWebKey = await crypto.subtle.exportKey("jwk", key);
