@@ -13,8 +13,7 @@ import {
     preambleToCryptoData 
 } from "./common";
 
-import * as base58 from './encodings/base58/index';
-import * as base64 from "./encodings/base64";
+import { base64urlnopad as base64, base58 }   from "@scure/base";
 
 /****************************************************************************************/
 /* The real converter functions                                                         */

@@ -1,7 +1,7 @@
 {
   "name": "@multikey-webcrypto-d",
-  "version": "0.5.0",
-  "date": "2024-08-25",
+  "version": "0.5.1",
+  "date": "2024-11-12",
   "description": "Conversions to and from multikeys and WebCrypto, using the three EC curves that are defined for Verifiable Credentials.",
   "tasks": {
     "test_jwk"  : "deno run tests/roundtrip_jwk.ts",
@@ -15,6 +15,7 @@
   "unstable": ["sloppy-imports"],
   "imports": {
     "@noble/curves/p384": "npm:@noble/curves/p384",
-    "@noble/curves/p256": "npm:@noble/curves/p256"
+    "@noble/curves/p256": "npm:@noble/curves/p256",
+    "@scure/base"       : "jsr:@scure/base"
   }
 }
