@@ -5,13 +5,13 @@
  */
 
 import {
-    JWKKeyPair, Multikey, Multibase, Preamble,
-    CryptoCurves, CryptoKeyTypes, CryptoKeyData,
+    type JWKKeyPair, type Multikey, type Multibase, type Preamble,
+    CryptoCurves, CryptoKeyTypes, type CryptoKeyData,
     ECDSACurves,
-    MultikeyBinary,
+    type MultikeyBinary,
     classToPreamble, classToDecoder, classToEncoder,
     preambleToCryptoData 
-} from "./common";
+} from "./common.ts";
 
 import { base64urlnopad as base64, base58 }   from "@scure/base";
 

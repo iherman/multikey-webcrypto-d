@@ -8,8 +8,8 @@
  * @module
  */
 
-import { JWKKeyPair, MultikeyBinary, CryptoCurves } from "./common";
-import { base64urlnopad as base64 }                 from "@scure/base";
+import { type JWKKeyPair, type MultikeyBinary, CryptoCurves } from "./common.ts";
+import { base64urlnopad as base64 }                           from "@scure/base";
 
 /**
  * Convert the Crypto values from JWK to the equivalent Multikey Pairs' binary data. 
@@ -103,15 +103,6 @@ function uint8ArrayToHex(uint8Array: Uint8Array): string {
         .join('');
 }
 
-// Utility function to convert hex string to Uint8Array
-function hexToUint8Array(hex: string): Uint8Array {
-    const result = new Uint8Array(hex.length / 2);
-    for (let i = 0; i < hex.length; i += 2) {
-        result[i / 2] = parseInt(hex.substr(i, 2), 16);
-    }
-    return result;
-}
-
 /**
  * Compress the public key. Could be done "manually" (look at the parity of the `y` value, and add a byte at the start of the `x`), but
  * I was lazy and relied on the curve libraries' methods
@@ -143,7 +134,7 @@ function uncompressPublicKey(curve: CryptoCurves, compressedKey: Uint8Array): { 
     const point = (curve === CryptoCurves.ECDSA_256) ? p256.ProjectivePoint.fromHex(compressedKey) : p384.ProjectivePoint.fromHex(compressedKey);
     const uncompressedKey = point.toRawBytes(false);
 
-    // The 'uncompressed key is a concatenation of the x and y values, plus an extra value at the start. The latter must be disposed off, and
+    // The uncompressed key is a concatenation of the x and y values, plus an extra value at the start. The latter must be disposed off, and
     // the remaining array to be cut into two.
     const keyLength = (curve === CryptoCurves.ECDSA_256) ? 32 : 48;
 

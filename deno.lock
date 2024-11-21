@@ -1,16 +1,11 @@
 {
   "version": "4",
   "specifiers": {
-    "jsr:@scure/base@*": "1.1.7",
     "npm:@noble/curves@*": "1.5.0",
+    "npm:@scure/base@*": "1.1.9",
     "npm:@types/elliptic@*": "6.4.18",
     "npm:elliptic@*": "6.5.5",
     "npm:elliptic@6.5.4": "6.5.4"
-  },
-  "jsr": {
-    "@scure/base@1.1.7": {
-      "integrity": "0b1fcb7fb1ecd92419773259a4de781cac13d0d85733fc43ea9511f1d678f968"
-    }
   },
   "npm": {
     "@noble/curves@1.5.0": {
@@ -21,6 +16,9 @@
     },
     "@noble/hashes@1.4.0": {
       "integrity": "sha512-V1JJ1WTRUqHHrOSh597hURcMqVKVGL/ea3kv0gSnEdsEZ0/+VyPghM1lMNGc00z7CIQorSvbKpuJkxvuHbvdbg=="
+    },
+    "@scure/base@1.1.9": {
+      "integrity": "sha512-8YKhl8GHiNI/pU2VMaofa2Tor7PJRAjwQLBBuilkJ9L5+13yVbC7JO/wS7piioAvPSwR3JKM1IJ/u4xQzbcXKg=="
     },
     "@types/bn.js@5.1.5": {
       "integrity": "sha512-V46N0zwKRF5Q00AZ6hWtN0T8gGmDUaUzLWQvHFo5yThtVwK/VCenFY3wXVbOvNfajEpsTfQM4IN9k/d6gUVX3A==",
@@ -101,8 +99,8 @@
   },
   "workspace": {
     "dependencies": [
-      "jsr:@scure/base@*",
-      "npm:@noble/curves@*"
+      "npm:@noble/curves@*",
+      "npm:@scure/base@*"
     ]
   }
 }

@@ -3,8 +3,8 @@
  * @module
  */
 
-import * as eddsa from "./eddsa";
-import * as ecdsa from "./ecdsa";
+import * as eddsa from "./eddsa.ts";
+import * as ecdsa from "./ecdsa.ts";
 
 /**
  * Public/secret pair of JWK instances

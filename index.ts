@@ -6,11 +6,12 @@
  * @package
  */
 
-import * as convert                            from './lib/convert';
-import { JWKKeyPair, Multikey, Multibase }     from './lib/common';
-export type { JWKKeyPair, Multikey, Multibase} from './lib/common';
+import * as convert                             from './lib/convert.ts';
+import type { JWKKeyPair, Multikey, Multibase } from './lib/common.ts';
+export type { JWKKeyPair, Multikey, Multibase}  from './lib/common.ts';
 
 // This type guard function is reused at two different places, better factor it out...
+// deno-lint-ignore no-explicit-any
 function isMultikeyPair(obj: any): obj is Multikey {
     return (obj as Multikey).publicKeyMultibase !== undefined;
 }
@@ -30,14 +31,7 @@ Converting multikeys to JWK
  * @throws - exceptions if something is incorrect in the incoming data
  */
 export function multikeyToJWK(keys: Multikey): JWKKeyPair;
-
-/**
- * Overloaded version of the conversion function for a single (public) key in Multikey, returning the generated JWK.
- * @param keys 
- * @throws - exceptions if something is incorrect in the incoming data
- */
 export function multikeyToJWK(keys: Multibase): JsonWebKey;
-
 export function multikeyToJWK(keys: Multikey | Multibase): JWKKeyPair | JsonWebKey {
     const input: Multikey = isMultikeyPair(keys) ? keys as Multikey : { publicKeyMultibase: keys };
     const jwk_keys = convert.multikeyToJWK(input);
@@ -65,15 +59,7 @@ Converting multikeys to WebCrypto
  * @async
  */
 export async function multikeyToCrypto(keys: Multikey): Promise<CryptoKeyPair>;
-
-/**
- * Overloaded version of the conversion function for a single (public) key in Multikey, returning the generated Crypto Key.
- * @param keys 
- * @throws - exceptions if something is incorrect in the incoming data
- */
 export async function multikeyToCrypto(keys: Multibase): Promise<CryptoKey>;
-
-// Implementation of the overloaded functions
 export async function multikeyToCrypto(keys: Multikey | Multibase): Promise<CryptoKeyPair | CryptoKey> {
     const input: Multikey = isMultikeyPair(keys) ? keys as Multikey : { publicKeyMultibase: keys };
     const jwkPair: JWKKeyPair = multikeyToJWK(input);
@@ -96,19 +82,16 @@ export async function multikeyToCrypto(keys: Multikey | Multibase): Promise<Cryp
             throw new Error("Unknown kty value for the JWK key");
     }
 
-    const output: CryptoKeyPair = {
-        publicKey : await crypto.subtle.importKey("jwk", jwkPair.publicKey, algorithm, true, ["verify"]),
-        privateKey : undefined,
-    }
-    if (jwkPair.privateKey != undefined) {
-        output.privateKey = await crypto.subtle.importKey("jwk", jwkPair.privateKey, algorithm, true, ["sign"])
-    }
-
-    // Got the return, the type depends on the overloaded input type
+    const publicKey = await crypto.subtle.importKey("jwk", jwkPair.publicKey, algorithm, true, ["verify"]);
     if (isMultikeyPair(keys)) {
-        return output;
+        if (jwkPair.privateKey !== undefined) {
+            const privateKey = await crypto.subtle.importKey("jwk", jwkPair.privateKey, algorithm, true, ["sign"]);
+            return { publicKey, privateKey } as CryptoKeyPair;
+        } else {
+            throw new Error("Unknown privateKey for the JWK key; something went wrong");
+        }
     } else {
-        return output.publicKey;
+        return publicKey;
     }
 }
 
@@ -140,6 +123,7 @@ export function JWKToMultikey(keys: JsonWebKey): Multibase;
 
 // Implementation of the overloaded functions
 export function JWKToMultikey(keys: JWKKeyPair | JsonWebKey): Multikey | Multibase {
+    // deno-lint-ignore no-explicit-any
     function isJWKKeyPair(obj: any): obj is JWKKeyPair {
         return (obj as JWKKeyPair).publicKey !== undefined;
     }
@@ -157,7 +141,7 @@ Converting WebCrypto to multikeys
 ========================================================================================= */
 
 /**
- * Convert a Crypto Key pair to Multikeys. This function exports the Cryptokeys into a JWK Key pair,
+ * Convert a Crypto Key pair to Multikeys. This function exports the cryptokeys into a JWK Key pair,
  * and uses the `JWKToMultikey` function.
  * 
  * Works for `ecdsa` (both `P-384` and `P-256`), and `eddsa`.
@@ -169,29 +153,21 @@ Converting WebCrypto to multikeys
  * @async
  */
 export async function cryptoToMultikey(keys: CryptoKeyPair): Promise<Multikey>;
-
-/**
- * Overloaded version of the conversion function for a single (public) key in JWK, returning the generated Multikey.
- * @param keys
- * @throws - exceptions if something is incorrect in the incoming data
- */
 export async function cryptoToMultikey(keys: CryptoKey): Promise<Multibase>;
-
-// Implementation of the overloaded functions
 export async function cryptoToMultikey(keys: CryptoKeyPair | CryptoKey): Promise<Multikey | Multibase> {
+    // deno-lint-ignore no-explicit-any
     function isCryptoKeyPair(obj: any): obj is CryptoKeyPair {
         return (obj as CryptoKeyPair).publicKey !== undefined;
     }
     const isPair = isCryptoKeyPair(keys);
 
-    const input: CryptoKeyPair = isPair ? keys : { publicKey: keys, privateKey: undefined };
+    const publicKeyCr: CryptoKey = isPair ? keys.publicKey : keys;
+    const privateKeyCr: CryptoKey | undefined = isPair ? keys.privateKey : undefined;
 
     // Generate the JWK version of the cryptokeys: 
     const jwkKeyPair: JWKKeyPair = {
-        publicKey: await crypto.subtle.exportKey("jwk", input.publicKey),
-    }
-    if (isPair && input.privateKey !== undefined) {
-        jwkKeyPair.privateKey = await crypto.subtle.exportKey("jwk", input.privateKey);
+        publicKey: await crypto.subtle.exportKey("jwk", publicKeyCr),
+        privateKey: (isPair && privateKeyCr !== undefined) ? await crypto.subtle.exportKey("jwk", privateKeyCr) : undefined,
     }
 
     // Ready for conversion

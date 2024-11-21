@@ -1,4 +1,4 @@
-import { Multibase, JWKToMultikey, multikeyToJWK } from "../index";
+import { Multibase, JWKToMultikey, multikeyToJWK } from "../index.ts";
 
 /** ----------------------------- */
 

@@ -1,7 +1,7 @@
 import { 
     JWKKeyPair, Multikey,
     cryptoToMultikey, multikeyToCrypto
-} from "../index";
+} from "../index.ts";
 
 /** ----------------------------- */
 

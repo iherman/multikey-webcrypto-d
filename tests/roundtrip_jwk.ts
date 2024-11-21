@@ -1,4 +1,4 @@
-import { JWKKeyPair, Multikey, JWKToMultikey, multikeyToJWK } from "../index";
+import { JWKKeyPair, Multikey, JWKToMultikey, multikeyToJWK } from "../index.ts";
 
 /** ----------------------------- */
 

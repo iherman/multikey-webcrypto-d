@@ -1,6 +1,6 @@
 import { 
-    Multibase, cryptoToMultikey, multikeyToCrypto
-} from "../index";
+    type Multibase, cryptoToMultikey, multikeyToCrypto
+} from "../index.ts";
 
 /** ----------------------------- */
 
