@@ -2,7 +2,10 @@
  * Conversion to and from [Multikey format](https://www.w3.org/TR/controller-document/#multikey) from
  * JWK or WebCrypto for the three EC curves that are defined for Verifiable Credentials: [ECDSA with P-256 and P-384](https://www.w3.org/TR/vc-di-ecdsa/#multikey) 
  * and [EDDSA](https://www.w3.org/TR/vc-di-eddsa/#multikey).
- * 
+ *
+ * Licensed by under the W3C Software and Document License, https://www.w3.org/Consortium/Legal/copyright-software.
+ * Copyright ©2024 World Wide Web Consortium. https://www.w3.org/copyright/software-license-2023/
+ *
  * @package
  */
 
