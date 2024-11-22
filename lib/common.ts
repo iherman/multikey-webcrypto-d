@@ -1,5 +1,9 @@
 /**
- * Common types, conversion functions and Multikey conversion utilities for the rest of the code. 
+ * Common types, conversion functions and Multikey conversion utilities for the rest of the code.
+*
+ * Licensed by under the W3C Software and Document License, https://www.w3.org/Consortium/Legal/copyright-software.
+ * Copyright ©2024 World Wide Web Consortium. https://www.w3.org/copyright/software-license-2023/
+ *
  * @module
  */
 

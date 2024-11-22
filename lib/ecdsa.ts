@@ -4,7 +4,10 @@
  * 
  * The two exported functions, used by the rest of the package, just branch out to the internal functions that do the
  * key (de)compression itself.
- * 
+ *
+ * Licensed by under the W3C Software and Document License, https://www.w3.org/Consortium/Legal/copyright-software.
+ * Copyright ©2024 World Wide Web Consortium. https://www.w3.org/copyright/software-license-2023/
+ *
  * @module
  */
 

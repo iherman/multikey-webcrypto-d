@@ -7,7 +7,9 @@
     "test_jwk"  : "deno run tests/roundtrip_jwk.ts",
     "test_s_jwk": "deno run tests/roundtrip_s_jwk.ts",
     "test_cry"  : "deno run tests/roundtrip_cry.ts",
-    "test_s_cry": "deno run tests/roundtrip_s_cry.ts"
+    "test_s_cry": "deno run tests/roundtrip_s_cry.ts",
+    "quick_test" : "deno test --reporter=dot",
+    "test" : "deno test"
   },
   "author": "Ivan Herman <ivan@w3.org> (https://www.w3.org/People/Ivan/)",
   "license": "W3C-20150513",

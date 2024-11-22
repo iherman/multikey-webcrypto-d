@@ -1,7 +1,10 @@
 /**
  * Base conversion functions for EDDSA. The functions are straightforward, but the interfaces are made so that
  * they coincide with the companion functions in ECDSA.
- * 
+ *
+ * Licensed by under the W3C Software and Document License, https://www.w3.org/Consortium/Legal/copyright-software.
+ * Copyright ©2024 World Wide Web Consortium. https://www.w3.org/copyright/software-license-2023/
+ *
  * @module
  */
 import type { JWKKeyPair, MultikeyBinary, CryptoCurves } from "./common.ts";
