@@ -1,15 +1,12 @@
 
---- NOT PRODUCTION READY ---
+--- NOT PRODUCTION READY. WOULD NEED INTEROPERABILITY TESTS---
 
 # Multikey ↔︎ WebCrypto and JWK conversions
 
 
-Conversion of cryptographic keys in [Multikey format](https://www.w3.org/TR/controller-document/#multikey) to and
+Conversion of cryptographic keys in [Multikey format](https://www.w3.org/TR/controller-document/#Multikey) to and
 from [WebCrypto](https://www.w3.org/TR/WebCryptoAPI/) and [JWK](https://datatracker.ietf.org/doc/html/rfc7517). The conversions are available for the three EC curves that are defined for Verifiable Credentials:
-[ECDSA with P-256 and P-384](https://www.w3.org/TR/vc-di-ecdsa/#multikey) and [EDDSA](https://www.w3.org/TR/vc-di-eddsa/#multikey). 
-
-(This is really a proof-of-concept implementation. It shows that such conversion _can indeed be done_, 
-which is an important in proving the practical usability of multikeys. It would need extra tests using external Multikeys.)
+ECDSA with P-256 and P-384 and EDDSA.
 
 The package has been written in TypeScript using [Deno](https://deno.land). It has also been published as an [npm package](https://www.npmjs.com/package/multikey-webcrypto).
 
@@ -47,10 +44,11 @@ const jwk_pair: mkc.JWKKeyPair = {
     privateKey: your_jwk_private_key,
 };
 const mk_pair: mkc.Multikey = mkc.JWKToMultikey(jwk_pair);
-// mk_pair.publicKeyMultibase and mk_pair.secretKeyMultibase provide the converted values
+// mk_pair.publicKeyMultibase and mk_pair.secretKeyMultibase provide 
+// the converted values
 
 // Convert the multikey back to jwk
-const generated_jwk_pair: mkc.JWKKeyPair = mkc.multikeyToJWK(mk_pair);
+const gen_jwk_pair: mkc.JWKKeyPair = mkc.multikeyToJWK(mk_pair);
 
 ```
 
@@ -63,7 +61,7 @@ const mk: mkc.Multibase = mkc.JWKToMultikey(your_jwk_public_key);
 // mk the encoded value
 
 // Convert the multikey back to jwk
-const generated_jwk_public_key: mkc.JWKKeyPair = mkc.multikeyToJWK(mk);
+const gen_jwk_public_key: mkc.JWKKeyPair = mkc.multikeyToJWK(mk);
 ```
 
 ### Multikey and WebCrypto keys
@@ -75,16 +73,18 @@ The simplest approach is to use the `await` constructs in the code:
 import * as mkc from "multikey-webcrypto";
 
 // Convert a JWK Pair to a Multikey.
-// Note: the `CryptoKeyPair` interface is defined by the WebCrypto implementations, not by this package
+// Note: the `CryptoKeyPair` interface is defined by the WebCrypto 
+// implementations, not by this package
 const crypto_pair: CryptoKeyPair = {
     publicKey: your_web_crypto_public_key,
     privateKey: your_web_crypto_secret_key,
 };
 const mk_pair: Multikey = await mkc.cryptoToMultikey(crypto_pair);
-// mk_pair.publicKeyMultibase and mk_pair.secretKeyMultibase provide the right values
+// mk_pair.publicKeyMultibase and mk_pair.secretKeyMultibase 
+// provide the right values
 
 // Convert the multikey back to jwk
-const generated_crypto_pair: mkc.JWKKeyPair = await mkc.multikeyToCrypto(mk_pair);
+const gen_crypto_pair: mkc.JWKKeyPair = await mkc.multikeyToCrypto(mk_pair);
 ```
 
 Similarly to the JWK case, handling public keys only can be done with the aliased versions of the same functions:
@@ -96,5 +96,5 @@ const mk: Multibase = mkc.cryptoToMultikey(your_web_crypto_public_key);
 // mk the encoded value
 
 // Convert the multikey back to jwk
-const generated_crypto_key: JWKKeyPair = mkc.multikeyToJWK(mk);
+const gen_crypto_key: JWKKeyPair = mkc.multikeyToJWK(mk);
 ```
