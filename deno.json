@@ -1,17 +1,24 @@
 {
   "name": "@iherman/multikey-webcrypto",
   "version": "0.5.5",
-  "date": "2024-11-22",
+  "date": "2024-11-29",
   "description": "Conversions to and from multikeys and WebCrypto, using the three EC curves defined for Verifiable Credentials.",
   "tasks": {
-    "docs": "deno run -A tools/copy_readme.ts > multikey_webcrypto.ts; deno doc --html --name=\"Multikey/WebCrypto API\" multikey_webcrypto.ts; /bin/rm multikey_webcrypto.ts; deno run -A tools/remove_tilde.ts",
-    "package": "deno run -A tools/build_npm.ts",
-    "quick_test" : "deno test --reporter=dot --ignore=\".npm/\"",
-    "test" : "deno test --ignore=\".npm/\""
+    "docs": {
+      "description": "Generate a user API documentation. The task is complicated because it includes the README.md file into the top level, and removes replaces the '~' character from the generated URL with the correct escape.",
+      "command": "deno run -A tools/copy_readme.ts > multikey_webcrypto.ts; deno doc --html --name=\"Multikey/WebCrypto API\" multikey_webcrypto.ts; /bin/rm multikey_webcrypto.ts; deno run -A tools/remove_tilde.ts"
+    },
+    "package": {
+      "description": "Generate an npm compatible package into the '.npm' directory.",
+      "command": "deno run -A tools/build_npm.ts"
+    },
+    "quick_test" : "deno test --reporter=dot tools/",
+    "test" : "deno test tools/"
   },
   "author": "Ivan Herman <ivan@w3.org> (https://www.w3.org/People/Ivan/)",
   "license": "W3C-20150513",
   "exports": "./index.ts",
+  "exclude": [".npm/"],
   "imports": {
     "@noble/curves/p384": "npm:@noble/curves/p384",
     "@noble/curves/p256": "npm:@noble/curves/p256",
