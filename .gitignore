@@ -36,3 +36,5 @@ oda
 lopikula
 nami
 .npm/
+# This is an intermediary artefact
+multikey_webcrypto.ts

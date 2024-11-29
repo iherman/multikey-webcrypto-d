@@ -6,7 +6,8 @@
   "tasks": {
     "docs": {
       "description": "Generate a user API documentation. The task is complicated because it includes the README.md file into the top level, and removes replaces the '~' character from the generated URL with the correct escape.",
-      "command": "deno run -A tools/copy_readme.ts > multikey_webcrypto.ts; deno doc --html --name=\"Multikey/WebCrypto API\" multikey_webcrypto.ts; /bin/rm multikey_webcrypto.ts; deno run -A tools/remove_tilde.ts"
+      "command": "sh tools/run_docs.sh",
+      "comment": "deno run -A tools/copy_readme.ts > multikey_webcrypto.ts; deno doc --html --name=\"Multikey/WebCrypto API\" multikey_webcrypto.ts; /bin/rm multikey_webcrypto.ts; deno run -A tools/remove_tilde.ts"
     },
     "package": {
       "description": "Generate an npm compatible package into the '.npm' directory.",
