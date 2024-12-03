@@ -6,4 +6,3 @@ deno run -A tools/copy_readme.ts
 deno doc --html --name="Multikey/WebCrypto API" index.ts
 mv multikey_webcrypto.ts index.ts
 (cd docs; touch .nojekyll)
-# deno run -A tools/remove_tilde.ts
