@@ -1,12 +1,12 @@
 {
   "name": "@iherman/multikey-webcrypto",
   "version": "0.5.5",
-  "date": "2024-11-29",
+  "date": "2024-12-04",
   "description": "Conversions to and from multikeys and WebCrypto, using the three EC curves defined for Verifiable Credentials.",
   "tasks": {
     "docs": {
       "description": "Generate a user API documentation. The task is complicated because it includes the README.md file into the top level before, and makes sure that the file .nojekyll exists after running deno doc.",
-      "command": "sh tools/run_docs.sh"
+      "command": "deno run -A tools/generate_doc.ts"
     },
     "package": {
       "description": "Generate an npm compatible package into the '.npm' directory.",

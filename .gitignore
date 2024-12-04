@@ -38,3 +38,9 @@ nami
 .npm/
 # This is an intermediary artefact
 multikey_webcrypto.ts
+
+# Artefact of deno doc
+!docs/~
+!docs/~/
+!docs/lib/*/~
+!docs/lib/*/~/
