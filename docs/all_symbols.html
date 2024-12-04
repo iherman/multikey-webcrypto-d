@@ -109,6 +109,277 @@ into a binary buffer, checks the preambles and invokes the crypto specific conve
 </div></div></div>
     </div></div>
 </section>
+<section class="section" id="lib&#x2F;common.ts">
+  <div>
+	  <h2 class="anchorable mb-1"><a href="#lib&#x2F;common.ts" class="anchor" aria-label="Anchor" tabIndex="-1"><svg
+  width="16"
+  height="16"
+  viewBox="0 0 14 14"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <g clip-path="url(#clip0_1081_1237)">
+    <path
+      fill-rule="evenodd"
+      clip-rule="evenodd"
+      d="M6.80328 2.8656C6.68736 2.99 6.62425 3.15454 6.62725 3.32456C6.63025 3.49457 6.69913 3.65678 6.81936 3.77702C6.9396 3.89725 7.10181 3.96613 7.27182 3.96913C7.44184 3.97213 7.60638 3.90902 7.73078 3.7931L8.82453 2.69935C8.98712 2.53676 9.18015 2.40778 9.39259 2.31978C9.60503 2.23179 9.83272 2.1865 10.0627 2.1865C10.2926 2.1865 10.5203 2.23179 10.7327 2.31978C10.9452 2.40778 11.1382 2.53676 11.3008 2.69935C11.4634 2.86194 11.5923 3.05497 11.6803 3.2674C11.7683 3.47984 11.8136 3.70753 11.8136 3.93747C11.8136 4.16741 11.7683 4.3951 11.6803 4.60754C11.5923 4.81998 11.4634 5.013 11.3008 5.1756L9.11328 7.3631C8.95075 7.52581 8.75775 7.65488 8.5453 7.74295C8.33285 7.83102 8.10513 7.87635 7.87516 7.87635C7.64518 7.87635 7.41746 7.83102 7.20501 7.74295C6.99256 7.65488 6.79956 7.52581 6.63703 7.3631C6.51263 7.24718 6.34809 7.18407 6.17807 7.18707C6.00806 7.19007 5.84585 7.25894 5.72561 7.37918C5.60538 7.49942 5.5365 7.66163 5.5335 7.83164C5.5305 8.00165 5.59361 8.1662 5.70953 8.2906C5.99391 8.57501 6.33154 8.80062 6.70312 8.95455C7.0747 9.10847 7.47296 9.18769 7.87516 9.18769C8.27736 9.18769 8.67562 9.10847 9.0472 8.95455C9.41878 8.80062 9.7564 8.57501 10.0408 8.2906L12.2283 6.1031C12.8026 5.52874 13.1253 4.74974 13.1253 3.93747C13.1253 3.12521 12.8026 2.34621 12.2283 1.77185C11.6539 1.19749 10.8749 0.874817 10.0627 0.874817C9.25039 0.874817 8.47139 1.19749 7.89703 1.77185L6.80328 2.8656ZM2.69953 11.3006C2.53682 11.1381 2.40774 10.9451 2.31968 10.7326C2.23161 10.5202 2.18628 10.2924 2.18628 10.0625C2.18628 9.8325 2.23161 9.60477 2.31968 9.39233C2.40774 9.17988 2.53682 8.98688 2.69953 8.82435L4.88703 6.63685C5.04956 6.47414 5.24256 6.34506 5.45501 6.25699C5.66746 6.16893 5.89518 6.1236 6.12516 6.1236C6.35513 6.1236 6.58285 6.16893 6.7953 6.25699C7.00775 6.34506 7.20075 6.47414 7.36328 6.63685C7.48768 6.75277 7.65223 6.81588 7.82224 6.81288C7.99225 6.80988 8.15446 6.741 8.2747 6.62077C8.39494 6.50053 8.46381 6.33832 8.46681 6.1683C8.46981 5.99829 8.4067 5.83375 8.29078 5.70935C8.0064 5.42494 7.66878 5.19933 7.2972 5.0454C6.92562 4.89148 6.52736 4.81225 6.12516 4.81225C5.72296 4.81225 5.3247 4.89148 4.95312 5.0454C4.58154 5.19933 4.24391 5.42494 3.95953 5.70935L1.77203 7.89685C1.19767 8.47121 0.875 9.25021 0.875 10.0625C0.875 10.8747 1.19767 11.6537 1.77203 12.2281C2.34639 12.8025 3.12539 13.1251 3.93766 13.1251C4.74992 13.1251 5.52892 12.8025 6.10328 12.2281L7.19703 11.1343C7.31295 11.0099 7.37606 10.8454 7.37306 10.6754C7.37006 10.5054 7.30119 10.3432 7.18095 10.2229C7.06071 10.1027 6.8985 10.0338 6.72849 10.0308C6.55848 10.0278 6.39393 10.0909 6.26953 10.2068L5.17578 11.3006C5.01325 11.4633 4.82025 11.5924 4.6078 11.6805C4.39535 11.7685 4.16763 11.8138 3.93766 11.8138C3.70768 11.8138 3.47996 11.7685 3.26751 11.6805C3.05506 11.5924 2.86206 11.4633 2.69953 11.3006Z"
+      fill="currentColor"
+    />
+  </g>
+  <defs>
+    <clipPath id="clip0_1081_1237">
+      <rect width="14" height="14" fill="white" />
+    </clipPath>
+  </defs>
+</svg>
+</a>
+<a href=".&#x2F;.&#x2F;lib&#x2F;common.ts&#x2F;index.html" class="contextLink">lib&#x2F;common.ts</a></h2><div class="markdown_summary"><p>Common types, conversion functions and Multikey conversion utilities for the rest of the code.</p>
+</div></div><div class="namespaceSection"><div id="namespace_classtodecoder" class="namespaceItem" ><div class="docNodeKindIcon"><div class="text-TypeAlias bg-TypeAlias/15" title="Type Alias">T</div></div>
+<div class="namespaceItemContent">
+		    <a href=".&#x2F;.&#x2F;lib&#x2F;common.ts&#x2F;~&#x2F;ClassToDecoder.html" title="ClassToDecoder">ClassToDecoder</a>
+
+	      <div class="namespaceItemContentDoc"><div class="markdown_summary"><p>Type definition for the table mapping curves to their decoder functions (i.e., mapping the Multikey to JWK).</p>
+</div></div></div>
+    </div><div id="namespace_classtodecoder-1" class="namespaceItem" ><div class="docNodeKindIcon"><div class="text-Variable bg-Variable/15" title="Variable">v</div></div>
+<div class="namespaceItemContent">
+		    <a href=".&#x2F;.&#x2F;lib&#x2F;common.ts&#x2F;~&#x2F;classToDecoder.html" title="classToDecoder">classToDecoder</a>
+
+	      <div class="namespaceItemContentDoc"><div class="markdown_summary"><p>What coder function must be used to convert from Multikey to JWK (data)?</p>
+</div></div></div>
+    </div><div id="namespace_classtoencoder" class="namespaceItem" ><div class="docNodeKindIcon"><div class="text-TypeAlias bg-TypeAlias/15" title="Type Alias">T</div></div>
+<div class="namespaceItemContent">
+		    <a href=".&#x2F;.&#x2F;lib&#x2F;common.ts&#x2F;~&#x2F;ClassToEncoder.html" title="ClassToEncoder">ClassToEncoder</a>
+
+	      <div class="namespaceItemContentDoc"><div class="markdown_summary"><p>Type definition for the table mapping curves to their encoder functions (i.e., mapping the JWK to Multikey).</p>
+</div></div></div>
+    </div><div id="namespace_classtoencoder-1" class="namespaceItem" ><div class="docNodeKindIcon"><div class="text-Variable bg-Variable/15" title="Variable">v</div></div>
+<div class="namespaceItemContent">
+		    <a href=".&#x2F;.&#x2F;lib&#x2F;common.ts&#x2F;~&#x2F;classToEncoder.html" title="classToEncoder">classToEncoder</a>
+
+	      <div class="namespaceItemContentDoc"><div class="markdown_summary"><p>What coder function must be used to convert from JWK to Multikey?</p>
+</div></div></div>
+    </div><div id="namespace_classtopreamble" class="namespaceItem" ><div class="docNodeKindIcon"><div class="text-TypeAlias bg-TypeAlias/15" title="Type Alias">T</div></div>
+<div class="namespaceItemContent">
+		    <a href=".&#x2F;.&#x2F;lib&#x2F;common.ts&#x2F;~&#x2F;ClassToPreamble.html" title="ClassToPreamble">ClassToPreamble</a>
+
+	      <div class="namespaceItemContentDoc"><div class="markdown_summary"><p>Type definition for the table mapping preambles to a specific curve.</p>
+</div></div></div>
+    </div><div id="namespace_classtopreamble-1" class="namespaceItem" ><div class="docNodeKindIcon"><div class="text-Variable bg-Variable/15" title="Variable">v</div></div>
+<div class="namespaceItemContent">
+		    <a href=".&#x2F;.&#x2F;lib&#x2F;common.ts&#x2F;~&#x2F;classToPreamble.html" title="classToPreamble">classToPreamble</a>
+
+	      <div class="namespaceItemContentDoc"><div class="markdown_summary"><p>What preambles must be used for a Curve?</p>
+</div></div></div>
+    </div><div id="namespace_cryptocurves" class="namespaceItem" ><div class="docNodeKindIcon"><div class="text-Enum bg-Enum/15" title="Enum">E</div></div>
+<div class="namespaceItemContent">
+		    <a href=".&#x2F;.&#x2F;lib&#x2F;common.ts&#x2F;~&#x2F;CryptoCurves.html" title="CryptoCurves">CryptoCurves</a>
+
+	      <div class="namespaceItemContentDoc"><div class="markdown_summary"><p>Names for the various crypto curves</p>
+</div></div></div>
+    </div><div id="namespace_cryptokeydata" class="namespaceItem" ><div class="docNodeKindIcon"><div class="text-Interface bg-Interface/15" title="Interface">I</div></div>
+<div class="namespaceItemContent">
+		    <a href=".&#x2F;.&#x2F;lib&#x2F;common.ts&#x2F;~&#x2F;CryptoKeyData.html" title="CryptoKeyData">CryptoKeyData</a>
+
+	      <div class="namespaceItemContentDoc"><div class="markdown_summary"><p>This is an internal type, used for the implementation: return the crypto curve and type from a multikey preamble.</p>
+</div></div><ul class="namespaceItemContentSubItems"><li><a href=".&#x2F;.&#x2F;lib&#x2F;common.ts&#x2F;~&#x2F;CryptoKeyData.html#property_crcurve">crCurve</a></li><li><a href=".&#x2F;.&#x2F;lib&#x2F;common.ts&#x2F;~&#x2F;CryptoKeyData.html#property_crtype">crType</a></li></ul></div>
+    </div><div id="namespace_cryptokeytypes" class="namespaceItem" ><div class="docNodeKindIcon"><div class="text-Enum bg-Enum/15" title="Enum">E</div></div>
+<div class="namespaceItemContent">
+		    <a href=".&#x2F;.&#x2F;lib&#x2F;common.ts&#x2F;~&#x2F;CryptoKeyTypes.html" title="CryptoKeyTypes">CryptoKeyTypes</a>
+
+	      <div class="namespaceItemContentDoc"><div class="markdown_summary"><p>Names for the key types</p>
+</div></div></div>
+    </div><div id="namespace_ecdsa256preambles" class="namespaceItem" ><div class="docNodeKindIcon"><div class="text-Variable bg-Variable/15" title="Variable">v</div></div>
+<div class="namespaceItemContent">
+		    <a href=".&#x2F;.&#x2F;lib&#x2F;common.ts&#x2F;~&#x2F;Ecdsa256Preambles.html" title="Ecdsa256Preambles">Ecdsa256Preambles</a>
+
+	      <div class="namespaceItemContentDoc"><div class="markdown_summary"><p>Preamble for ECDSA <code>P-256</code>, a.k.a. <code>secp256r1</code> curve</p>
+</div></div></div>
+    </div><div id="namespace_ecdsa384preambles" class="namespaceItem" ><div class="docNodeKindIcon"><div class="text-Variable bg-Variable/15" title="Variable">v</div></div>
+<div class="namespaceItemContent">
+		    <a href=".&#x2F;.&#x2F;lib&#x2F;common.ts&#x2F;~&#x2F;Ecdsa384Preambles.html" title="Ecdsa384Preambles">Ecdsa384Preambles</a>
+
+	      <div class="namespaceItemContentDoc"><div class="markdown_summary"><p>Preamble for ECDSA <code>P-384</code>, a.k.a. <code>secp384r1</code> curve</p>
+</div></div></div>
+    </div><div id="namespace_ecdsacurves" class="namespaceItem" ><div class="docNodeKindIcon"><div class="text-Variable bg-Variable/15" title="Variable">v</div></div>
+<div class="namespaceItemContent">
+		    <a href=".&#x2F;.&#x2F;lib&#x2F;common.ts&#x2F;~&#x2F;ECDSACurves.html" title="ECDSACurves">ECDSACurves</a>
+
+	      <div class="namespaceItemContentDoc"><div class="markdown_summary"><p>List of possible ECDSA Curves. Having this here declaratively may make it easier if
+in the future, a new curve is added to the family (P-512)?</p>
+</div></div></div>
+    </div><div id="namespace_eddsapreambles" class="namespaceItem" ><div class="docNodeKindIcon"><div class="text-Variable bg-Variable/15" title="Variable">v</div></div>
+<div class="namespaceItemContent">
+		    <a href=".&#x2F;.&#x2F;lib&#x2F;common.ts&#x2F;~&#x2F;EddsaPreambles.html" title="EddsaPreambles">EddsaPreambles</a>
+
+	      <div class="namespaceItemContentDoc"><div class="markdown_summary"><p>Preamble value for EDDSA, a.k.a. <code>ed25519</code> curve</p>
+</div></div></div>
+    </div><div id="namespace_jwkkeypair" class="namespaceItem" ><div class="docNodeKindIcon"><div class="text-Interface bg-Interface/15" title="Interface">I</div></div>
+<div class="namespaceItemContent">
+		    <a href=".&#x2F;.&#x2F;lib&#x2F;common.ts&#x2F;~&#x2F;JWKKeyPair.html" title="JWKKeyPair">JWKKeyPair</a>
+
+	      <div class="namespaceItemContentDoc"><div class="markdown_summary"><p>Public/secret pair of JWK instances</p>
+</div></div><ul class="namespaceItemContentSubItems"><li><a href=".&#x2F;.&#x2F;lib&#x2F;common.ts&#x2F;~&#x2F;JWKKeyPair.html#property_privatekey">privateKey</a></li><li><a href=".&#x2F;.&#x2F;lib&#x2F;common.ts&#x2F;~&#x2F;JWKKeyPair.html#property_publickey">publicKey</a></li></ul></div>
+    </div><div id="namespace_multibase" class="namespaceItem" ><div class="docNodeKindIcon"><div class="text-TypeAlias bg-TypeAlias/15" title="Type Alias">T</div></div>
+<div class="namespaceItemContent">
+		    <a href=".&#x2F;.&#x2F;lib&#x2F;common.ts&#x2F;~&#x2F;Multibase.html" title="Multibase">Multibase</a>
+
+	      <div class="namespaceItemContentDoc"><div class="markdown_summary"><p>Type for a Multibase</p>
+</div></div></div>
+    </div><div id="namespace_multikey" class="namespaceItem" ><div class="docNodeKindIcon"><div class="text-Interface bg-Interface/15" title="Interface">I</div></div>
+<div class="namespaceItemContent">
+		    <a href=".&#x2F;.&#x2F;lib&#x2F;common.ts&#x2F;~&#x2F;Multikey.html" title="Multikey">Multikey</a>
+
+	      <div class="namespaceItemContentDoc"><div class="markdown_summary"><p>Pair of keys in Multibase encoding. Using the field names as defined in the
+<a href="https://www.w3.org/TR/controller-document/#multikey">Multikey specification</a>.</p>
+</div></div><ul class="namespaceItemContentSubItems"><li><a href=".&#x2F;.&#x2F;lib&#x2F;common.ts&#x2F;~&#x2F;Multikey.html#property_publickeymultibase">publicKeyMultibase</a></li><li><a href=".&#x2F;.&#x2F;lib&#x2F;common.ts&#x2F;~&#x2F;Multikey.html#property_secretkeymultibase">secretKeyMultibase</a></li></ul></div>
+    </div><div id="namespace_multikeybinary" class="namespaceItem" ><div class="docNodeKindIcon"><div class="text-Interface bg-Interface/15" title="Interface">I</div></div>
+<div class="namespaceItemContent">
+		    <a href=".&#x2F;.&#x2F;lib&#x2F;common.ts&#x2F;~&#x2F;MultikeyBinary.html" title="MultikeyBinary">MultikeyBinary</a>
+
+	      <div class="namespaceItemContentDoc"><div class="markdown_summary"><p>Same as the Multikey, but decoded and without the preambles. I.e., just the bare key values.</p>
+</div></div><ul class="namespaceItemContentSubItems"><li><a href=".&#x2F;.&#x2F;lib&#x2F;common.ts&#x2F;~&#x2F;MultikeyBinary.html#property_public">public</a></li><li><a href=".&#x2F;.&#x2F;lib&#x2F;common.ts&#x2F;~&#x2F;MultikeyBinary.html#property_secret">secret</a></li></ul></div>
+    </div><div id="namespace_preamble" class="namespaceItem" ><div class="docNodeKindIcon"><div class="text-TypeAlias bg-TypeAlias/15" title="Type Alias">T</div></div>
+<div class="namespaceItemContent">
+		    <a href=".&#x2F;.&#x2F;lib&#x2F;common.ts&#x2F;~&#x2F;Preamble.html" title="Preamble">Preamble</a>
+
+	      <div class="namespaceItemContentDoc"><div class="markdown_summary"><p>Type used for preambles, which are, so far, a single pair of numbers.</p>
+</div></div></div>
+    </div><div id="namespace_preambletocryptodata" class="namespaceItem" ><div class="docNodeKindIcon"><div class="text-Function bg-Function/15" title="Function">f</div></div>
+<div class="namespaceItemContent">
+		    <a href=".&#x2F;.&#x2F;lib&#x2F;common.ts&#x2F;~&#x2F;preambleToCryptoData.html" title="preambleToCryptoData">preambleToCryptoData</a>
+
+	      <div class="namespaceItemContentDoc"><div class="markdown_summary"><p>Classify the crypto key based on the multikey preamble characters that are at the start of the code.
+These are two binary numbers, signalling the crypto category (<code>ecdsa</code> or <code>eddsa</code>) and, in the former case,
+the additional reference to the exact curve.</p>
+</div></div></div>
+    </div></div>
+</section>
+<section class="section" id="lib&#x2F;convert.ts">
+  <div>
+	  <h2 class="anchorable mb-1"><a href="#lib&#x2F;convert.ts" class="anchor" aria-label="Anchor" tabIndex="-1"><svg
+  width="16"
+  height="16"
+  viewBox="0 0 14 14"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <g clip-path="url(#clip0_1081_1237)">
+    <path
+      fill-rule="evenodd"
+      clip-rule="evenodd"
+      d="M6.80328 2.8656C6.68736 2.99 6.62425 3.15454 6.62725 3.32456C6.63025 3.49457 6.69913 3.65678 6.81936 3.77702C6.9396 3.89725 7.10181 3.96613 7.27182 3.96913C7.44184 3.97213 7.60638 3.90902 7.73078 3.7931L8.82453 2.69935C8.98712 2.53676 9.18015 2.40778 9.39259 2.31978C9.60503 2.23179 9.83272 2.1865 10.0627 2.1865C10.2926 2.1865 10.5203 2.23179 10.7327 2.31978C10.9452 2.40778 11.1382 2.53676 11.3008 2.69935C11.4634 2.86194 11.5923 3.05497 11.6803 3.2674C11.7683 3.47984 11.8136 3.70753 11.8136 3.93747C11.8136 4.16741 11.7683 4.3951 11.6803 4.60754C11.5923 4.81998 11.4634 5.013 11.3008 5.1756L9.11328 7.3631C8.95075 7.52581 8.75775 7.65488 8.5453 7.74295C8.33285 7.83102 8.10513 7.87635 7.87516 7.87635C7.64518 7.87635 7.41746 7.83102 7.20501 7.74295C6.99256 7.65488 6.79956 7.52581 6.63703 7.3631C6.51263 7.24718 6.34809 7.18407 6.17807 7.18707C6.00806 7.19007 5.84585 7.25894 5.72561 7.37918C5.60538 7.49942 5.5365 7.66163 5.5335 7.83164C5.5305 8.00165 5.59361 8.1662 5.70953 8.2906C5.99391 8.57501 6.33154 8.80062 6.70312 8.95455C7.0747 9.10847 7.47296 9.18769 7.87516 9.18769C8.27736 9.18769 8.67562 9.10847 9.0472 8.95455C9.41878 8.80062 9.7564 8.57501 10.0408 8.2906L12.2283 6.1031C12.8026 5.52874 13.1253 4.74974 13.1253 3.93747C13.1253 3.12521 12.8026 2.34621 12.2283 1.77185C11.6539 1.19749 10.8749 0.874817 10.0627 0.874817C9.25039 0.874817 8.47139 1.19749 7.89703 1.77185L6.80328 2.8656ZM2.69953 11.3006C2.53682 11.1381 2.40774 10.9451 2.31968 10.7326C2.23161 10.5202 2.18628 10.2924 2.18628 10.0625C2.18628 9.8325 2.23161 9.60477 2.31968 9.39233C2.40774 9.17988 2.53682 8.98688 2.69953 8.82435L4.88703 6.63685C5.04956 6.47414 5.24256 6.34506 5.45501 6.25699C5.66746 6.16893 5.89518 6.1236 6.12516 6.1236C6.35513 6.1236 6.58285 6.16893 6.7953 6.25699C7.00775 6.34506 7.20075 6.47414 7.36328 6.63685C7.48768 6.75277 7.65223 6.81588 7.82224 6.81288C7.99225 6.80988 8.15446 6.741 8.2747 6.62077C8.39494 6.50053 8.46381 6.33832 8.46681 6.1683C8.46981 5.99829 8.4067 5.83375 8.29078 5.70935C8.0064 5.42494 7.66878 5.19933 7.2972 5.0454C6.92562 4.89148 6.52736 4.81225 6.12516 4.81225C5.72296 4.81225 5.3247 4.89148 4.95312 5.0454C4.58154 5.19933 4.24391 5.42494 3.95953 5.70935L1.77203 7.89685C1.19767 8.47121 0.875 9.25021 0.875 10.0625C0.875 10.8747 1.19767 11.6537 1.77203 12.2281C2.34639 12.8025 3.12539 13.1251 3.93766 13.1251C4.74992 13.1251 5.52892 12.8025 6.10328 12.2281L7.19703 11.1343C7.31295 11.0099 7.37606 10.8454 7.37306 10.6754C7.37006 10.5054 7.30119 10.3432 7.18095 10.2229C7.06071 10.1027 6.8985 10.0338 6.72849 10.0308C6.55848 10.0278 6.39393 10.0909 6.26953 10.2068L5.17578 11.3006C5.01325 11.4633 4.82025 11.5924 4.6078 11.6805C4.39535 11.7685 4.16763 11.8138 3.93766 11.8138C3.70768 11.8138 3.47996 11.7685 3.26751 11.6805C3.05506 11.5924 2.86206 11.4633 2.69953 11.3006Z"
+      fill="currentColor"
+    />
+  </g>
+  <defs>
+    <clipPath id="clip0_1081_1237">
+      <rect width="14" height="14" fill="white" />
+    </clipPath>
+  </defs>
+</svg>
+</a>
+<a href=".&#x2F;.&#x2F;lib&#x2F;convert.ts&#x2F;index.html" class="contextLink">lib&#x2F;convert.ts</a></h2><div class="markdown_summary"><p>The real work for the whole library are done in the main functions in this module.</p>
+</div></div><div class="namespaceSection"><div id="namespace_jwktomultikey" class="namespaceItem" ><div class="docNodeKindIcon"><div class="text-Function bg-Function/15" title="Function">f</div></div>
+<div class="namespaceItemContent">
+		    <a href=".&#x2F;.&#x2F;lib&#x2F;convert.ts&#x2F;~&#x2F;JWKToMultikey.html" title="JWKToMultikey">JWKToMultikey</a>
+
+	      <div class="namespaceItemContentDoc"><div class="markdown_summary"><p>Convert JWK Key pair to Multikeys. This function decodes the JWK keys, finds out which binary key it encodes
+and converts the key to the multikey versions depending on the exact curve.</p>
+</div></div></div>
+    </div><div id="namespace_multikeytojwk" class="namespaceItem" ><div class="docNodeKindIcon"><div class="text-Function bg-Function/15" title="Function">f</div></div>
+<div class="namespaceItemContent">
+		    <a href=".&#x2F;.&#x2F;lib&#x2F;convert.ts&#x2F;~&#x2F;multikeyToJWK.html" title="multikeyToJWK">multikeyToJWK</a>
+
+	      <div class="namespaceItemContentDoc"><div class="markdown_summary"><p>Generic function to convert a multikey pair to JWK. This function decodes the multikey data
+into a binary buffer, checks the preambles and invokes the crypto curve specific converter functions
+(depending on the preamble values) that do the final conversion from the binary data to JWK.</p>
+</div></div></div>
+    </div></div>
+</section>
+<section class="section" id="lib&#x2F;ecdsa.ts">
+  <div>
+	  <h2 class="anchorable mb-1"><a href="#lib&#x2F;ecdsa.ts" class="anchor" aria-label="Anchor" tabIndex="-1"><svg
+  width="16"
+  height="16"
+  viewBox="0 0 14 14"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <g clip-path="url(#clip0_1081_1237)">
+    <path
+      fill-rule="evenodd"
+      clip-rule="evenodd"
+      d="M6.80328 2.8656C6.68736 2.99 6.62425 3.15454 6.62725 3.32456C6.63025 3.49457 6.69913 3.65678 6.81936 3.77702C6.9396 3.89725 7.10181 3.96613 7.27182 3.96913C7.44184 3.97213 7.60638 3.90902 7.73078 3.7931L8.82453 2.69935C8.98712 2.53676 9.18015 2.40778 9.39259 2.31978C9.60503 2.23179 9.83272 2.1865 10.0627 2.1865C10.2926 2.1865 10.5203 2.23179 10.7327 2.31978C10.9452 2.40778 11.1382 2.53676 11.3008 2.69935C11.4634 2.86194 11.5923 3.05497 11.6803 3.2674C11.7683 3.47984 11.8136 3.70753 11.8136 3.93747C11.8136 4.16741 11.7683 4.3951 11.6803 4.60754C11.5923 4.81998 11.4634 5.013 11.3008 5.1756L9.11328 7.3631C8.95075 7.52581 8.75775 7.65488 8.5453 7.74295C8.33285 7.83102 8.10513 7.87635 7.87516 7.87635C7.64518 7.87635 7.41746 7.83102 7.20501 7.74295C6.99256 7.65488 6.79956 7.52581 6.63703 7.3631C6.51263 7.24718 6.34809 7.18407 6.17807 7.18707C6.00806 7.19007 5.84585 7.25894 5.72561 7.37918C5.60538 7.49942 5.5365 7.66163 5.5335 7.83164C5.5305 8.00165 5.59361 8.1662 5.70953 8.2906C5.99391 8.57501 6.33154 8.80062 6.70312 8.95455C7.0747 9.10847 7.47296 9.18769 7.87516 9.18769C8.27736 9.18769 8.67562 9.10847 9.0472 8.95455C9.41878 8.80062 9.7564 8.57501 10.0408 8.2906L12.2283 6.1031C12.8026 5.52874 13.1253 4.74974 13.1253 3.93747C13.1253 3.12521 12.8026 2.34621 12.2283 1.77185C11.6539 1.19749 10.8749 0.874817 10.0627 0.874817C9.25039 0.874817 8.47139 1.19749 7.89703 1.77185L6.80328 2.8656ZM2.69953 11.3006C2.53682 11.1381 2.40774 10.9451 2.31968 10.7326C2.23161 10.5202 2.18628 10.2924 2.18628 10.0625C2.18628 9.8325 2.23161 9.60477 2.31968 9.39233C2.40774 9.17988 2.53682 8.98688 2.69953 8.82435L4.88703 6.63685C5.04956 6.47414 5.24256 6.34506 5.45501 6.25699C5.66746 6.16893 5.89518 6.1236 6.12516 6.1236C6.35513 6.1236 6.58285 6.16893 6.7953 6.25699C7.00775 6.34506 7.20075 6.47414 7.36328 6.63685C7.48768 6.75277 7.65223 6.81588 7.82224 6.81288C7.99225 6.80988 8.15446 6.741 8.2747 6.62077C8.39494 6.50053 8.46381 6.33832 8.46681 6.1683C8.46981 5.99829 8.4067 5.83375 8.29078 5.70935C8.0064 5.42494 7.66878 5.19933 7.2972 5.0454C6.92562 4.89148 6.52736 4.81225 6.12516 4.81225C5.72296 4.81225 5.3247 4.89148 4.95312 5.0454C4.58154 5.19933 4.24391 5.42494 3.95953 5.70935L1.77203 7.89685C1.19767 8.47121 0.875 9.25021 0.875 10.0625C0.875 10.8747 1.19767 11.6537 1.77203 12.2281C2.34639 12.8025 3.12539 13.1251 3.93766 13.1251C4.74992 13.1251 5.52892 12.8025 6.10328 12.2281L7.19703 11.1343C7.31295 11.0099 7.37606 10.8454 7.37306 10.6754C7.37006 10.5054 7.30119 10.3432 7.18095 10.2229C7.06071 10.1027 6.8985 10.0338 6.72849 10.0308C6.55848 10.0278 6.39393 10.0909 6.26953 10.2068L5.17578 11.3006C5.01325 11.4633 4.82025 11.5924 4.6078 11.6805C4.39535 11.7685 4.16763 11.8138 3.93766 11.8138C3.70768 11.8138 3.47996 11.7685 3.26751 11.6805C3.05506 11.5924 2.86206 11.4633 2.69953 11.3006Z"
+      fill="currentColor"
+    />
+  </g>
+  <defs>
+    <clipPath id="clip0_1081_1237">
+      <rect width="14" height="14" fill="white" />
+    </clipPath>
+  </defs>
+</svg>
+</a>
+<a href=".&#x2F;.&#x2F;lib&#x2F;ecdsa.ts&#x2F;index.html" class="contextLink">lib&#x2F;ecdsa.ts</a></h2><div class="markdown_summary"><p>Base conversion functions for ECDSA. The Multikey definition requires the usage of a compressed public key
+which must be compressed when creating the Multikey representation, and decompressed for the JWK conversion.</p>
+</div></div><div class="namespaceSection"><div id="namespace_jwktomultikeybinary" class="namespaceItem" ><div class="docNodeKindIcon"><div class="text-Function bg-Function/15" title="Function">f</div></div>
+<div class="namespaceItemContent">
+		    <a href=".&#x2F;.&#x2F;lib&#x2F;ecdsa.ts&#x2F;~&#x2F;JWKToMultikeyBinary.html" title="JWKToMultikeyBinary">JWKToMultikeyBinary</a>
+
+	      <div class="namespaceItemContentDoc"><div class="markdown_summary"><p>Convert the Crypto values from JWK to the equivalent Multikey Pairs' binary data.
+The final encoding, with preambles, are done in the general level.</p>
+</div></div></div>
+    </div><div id="namespace_multikeybinarytojwk" class="namespaceItem" ><div class="docNodeKindIcon"><div class="text-Function bg-Function/15" title="Function">f</div></div>
+<div class="namespaceItemContent">
+		    <a href=".&#x2F;.&#x2F;lib&#x2F;ecdsa.ts&#x2F;~&#x2F;multikeyBinaryToJWK.html" title="multikeyBinaryToJWK">multikeyBinaryToJWK</a>
+
+	      <div class="namespaceItemContentDoc"><div class="markdown_summary"><p>Convert the multikey values to their JWK equivalents. The final <code>x</code> and <code>d</code> values are encoded
+in base64 and then the relevant JWK structure are created</p>
+</div></div></div>
+    </div></div>
+</section>
+<section class="section" id="lib&#x2F;eddsa.ts">
+  <div>
+	  <h2 class="anchorable mb-1"><a href="#lib&#x2F;eddsa.ts" class="anchor" aria-label="Anchor" tabIndex="-1"><svg
+  width="16"
+  height="16"
+  viewBox="0 0 14 14"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <g clip-path="url(#clip0_1081_1237)">
+    <path
+      fill-rule="evenodd"
+      clip-rule="evenodd"
+      d="M6.80328 2.8656C6.68736 2.99 6.62425 3.15454 6.62725 3.32456C6.63025 3.49457 6.69913 3.65678 6.81936 3.77702C6.9396 3.89725 7.10181 3.96613 7.27182 3.96913C7.44184 3.97213 7.60638 3.90902 7.73078 3.7931L8.82453 2.69935C8.98712 2.53676 9.18015 2.40778 9.39259 2.31978C9.60503 2.23179 9.83272 2.1865 10.0627 2.1865C10.2926 2.1865 10.5203 2.23179 10.7327 2.31978C10.9452 2.40778 11.1382 2.53676 11.3008 2.69935C11.4634 2.86194 11.5923 3.05497 11.6803 3.2674C11.7683 3.47984 11.8136 3.70753 11.8136 3.93747C11.8136 4.16741 11.7683 4.3951 11.6803 4.60754C11.5923 4.81998 11.4634 5.013 11.3008 5.1756L9.11328 7.3631C8.95075 7.52581 8.75775 7.65488 8.5453 7.74295C8.33285 7.83102 8.10513 7.87635 7.87516 7.87635C7.64518 7.87635 7.41746 7.83102 7.20501 7.74295C6.99256 7.65488 6.79956 7.52581 6.63703 7.3631C6.51263 7.24718 6.34809 7.18407 6.17807 7.18707C6.00806 7.19007 5.84585 7.25894 5.72561 7.37918C5.60538 7.49942 5.5365 7.66163 5.5335 7.83164C5.5305 8.00165 5.59361 8.1662 5.70953 8.2906C5.99391 8.57501 6.33154 8.80062 6.70312 8.95455C7.0747 9.10847 7.47296 9.18769 7.87516 9.18769C8.27736 9.18769 8.67562 9.10847 9.0472 8.95455C9.41878 8.80062 9.7564 8.57501 10.0408 8.2906L12.2283 6.1031C12.8026 5.52874 13.1253 4.74974 13.1253 3.93747C13.1253 3.12521 12.8026 2.34621 12.2283 1.77185C11.6539 1.19749 10.8749 0.874817 10.0627 0.874817C9.25039 0.874817 8.47139 1.19749 7.89703 1.77185L6.80328 2.8656ZM2.69953 11.3006C2.53682 11.1381 2.40774 10.9451 2.31968 10.7326C2.23161 10.5202 2.18628 10.2924 2.18628 10.0625C2.18628 9.8325 2.23161 9.60477 2.31968 9.39233C2.40774 9.17988 2.53682 8.98688 2.69953 8.82435L4.88703 6.63685C5.04956 6.47414 5.24256 6.34506 5.45501 6.25699C5.66746 6.16893 5.89518 6.1236 6.12516 6.1236C6.35513 6.1236 6.58285 6.16893 6.7953 6.25699C7.00775 6.34506 7.20075 6.47414 7.36328 6.63685C7.48768 6.75277 7.65223 6.81588 7.82224 6.81288C7.99225 6.80988 8.15446 6.741 8.2747 6.62077C8.39494 6.50053 8.46381 6.33832 8.46681 6.1683C8.46981 5.99829 8.4067 5.83375 8.29078 5.70935C8.0064 5.42494 7.66878 5.19933 7.2972 5.0454C6.92562 4.89148 6.52736 4.81225 6.12516 4.81225C5.72296 4.81225 5.3247 4.89148 4.95312 5.0454C4.58154 5.19933 4.24391 5.42494 3.95953 5.70935L1.77203 7.89685C1.19767 8.47121 0.875 9.25021 0.875 10.0625C0.875 10.8747 1.19767 11.6537 1.77203 12.2281C2.34639 12.8025 3.12539 13.1251 3.93766 13.1251C4.74992 13.1251 5.52892 12.8025 6.10328 12.2281L7.19703 11.1343C7.31295 11.0099 7.37606 10.8454 7.37306 10.6754C7.37006 10.5054 7.30119 10.3432 7.18095 10.2229C7.06071 10.1027 6.8985 10.0338 6.72849 10.0308C6.55848 10.0278 6.39393 10.0909 6.26953 10.2068L5.17578 11.3006C5.01325 11.4633 4.82025 11.5924 4.6078 11.6805C4.39535 11.7685 4.16763 11.8138 3.93766 11.8138C3.70768 11.8138 3.47996 11.7685 3.26751 11.6805C3.05506 11.5924 2.86206 11.4633 2.69953 11.3006Z"
+      fill="currentColor"
+    />
+  </g>
+  <defs>
+    <clipPath id="clip0_1081_1237">
+      <rect width="14" height="14" fill="white" />
+    </clipPath>
+  </defs>
+</svg>
+</a>
+<a href=".&#x2F;.&#x2F;lib&#x2F;eddsa.ts&#x2F;index.html" class="contextLink">lib&#x2F;eddsa.ts</a></h2><div class="markdown_summary"><p>Base conversion functions for EDDSA. The functions are straightforward, but the interfaces are made so that
+they coincide with the companion functions in ECDSA.</p>
+</div></div><div class="namespaceSection"><div id="namespace_jwktomultikeybinary" class="namespaceItem" ><div class="docNodeKindIcon"><div class="text-Function bg-Function/15" title="Function">f</div></div>
+<div class="namespaceItemContent">
+		    <a href=".&#x2F;.&#x2F;lib&#x2F;eddsa.ts&#x2F;~&#x2F;JWKToMultikeyBinary.html" title="JWKToMultikeyBinary">JWKToMultikeyBinary</a>
+
+	      <div class="namespaceItemContentDoc"><div class="markdown_summary"><p>Convert the Crypto values from JWK to the equivalent Multikey Pairs' binary data.
+The final encoding, with preambles, are done in the general level.</p>
+</div></div></div>
+    </div><div id="namespace_multikeybinarytojwk" class="namespaceItem" ><div class="docNodeKindIcon"><div class="text-Function bg-Function/15" title="Function">f</div></div>
+<div class="namespaceItemContent">
+		    <a href=".&#x2F;.&#x2F;lib&#x2F;eddsa.ts&#x2F;~&#x2F;multikeyBinaryToJWK.html" title="multikeyBinaryToJWK">multikeyBinaryToJWK</a>
+
+	      <div class="namespaceItemContentDoc"><div class="markdown_summary"><p>Convert the multikey values to their JWK equivalents. The final <code>x</code> and <code>d</code> values are encoded
+in base64 and then the relevant JWK structure are created</p>
+</div></div></div>
+    </div></div>
+</section>
 </div>
 </main>
   </div>
