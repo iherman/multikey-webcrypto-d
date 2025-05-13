@@ -1,7 +1,7 @@
 {
   "name": "@iherman/multikey-webcrypto",
-  "version": "0.5.5",
-  "date": "2024-12-04",
+  "version": "0.6.0",
+  "date": "2025-05-14",
   "description": "Conversions to and from multikeys and WebCrypto, using the three EC curves defined for Verifiable Credentials.",
   "tasks": {
     "docs": {
@@ -16,12 +16,7 @@
     "test" : "deno test tools/"
   },
   "author": "Ivan Herman <ivan@w3.org> (https://www.w3.org/People/Ivan/)",
-  "license": "W3C-20150513",
+  "license": "W3C-20230101",
   "exports": "./index.ts",
-  "exclude": [".npm/"],
-  "imports": {
-    "@noble/curves/p384": "npm:@noble/curves/p384",
-    "@noble/curves/p256": "npm:@noble/curves/p256",
-    "@scure/base"       : "npm:@scure/base"
-  }
+  "exclude": [".npm/"]
 }

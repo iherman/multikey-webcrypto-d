@@ -2,7 +2,7 @@
  * The real work for the whole library are done in the main functions in this module.
  *
  * Licensed by under the W3C Software and Document License, https://www.w3.org/Consortium/Legal/copyright-software.
- * Copyright ©2024 World Wide Web Consortium. https://www.w3.org/copyright/software-license-2023/
+ * Copyright ©2025 World Wide Web Consortium. https://www.w3.org/copyright/software-license-2023/
  *
  * @module
  */
@@ -16,7 +16,7 @@ import {
     preambleToCryptoData 
 } from "./common.ts";
 
-import { base64urlnopad as base64, base58 }   from "@scure/base";
+import { base64urlnopad as base64, base58 } from "npm:@scure/base@1.2.5";
 
 /****************************************************************************************/
 /* The real converter functions                                                         */

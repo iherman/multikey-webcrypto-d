@@ -6,13 +6,15 @@
  * key (de)compression itself.
  *
  * Licensed by under the W3C Software and Document License, https://www.w3.org/Consortium/Legal/copyright-software.
- * Copyright ©2024 World Wide Web Consortium. https://www.w3.org/copyright/software-license-2023/
+ * Copyright ©2025 World Wide Web Consortium. https://www.w3.org/copyright/software-license-2023/
  *
  * @module
  */
 
 import { type JWKKeyPair, type MultikeyBinary, CryptoCurves } from "./common.ts";
-import { base64urlnopad as base64 }                           from "@scure/base";
+import { base64urlnopad as base64 }                           from "npm:@scure/base@1.2.5";
+import { p384 }                                               from 'npm:@noble/curves@1.9.0/p384';
+import { p256 }                                               from 'npm:@noble/curves@1.9.0/p256';
 
 /**
  * Convert the Crypto values from JWK to the equivalent Multikey Pairs' binary data. 
@@ -96,8 +98,6 @@ export function multikeyBinaryToJWK(curve: CryptoCurves, xb: Uint8Array, db?: Ui
  *  
 *************************************************************************/
 
-import { p384 } from '@noble/curves/p384';
-import { p256 } from '@noble/curves/p256';
 
 // Utility function to convert Uint8Array to hex string
 function uint8ArrayToHex(uint8Array: Uint8Array): string {

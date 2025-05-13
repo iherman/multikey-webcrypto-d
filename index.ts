@@ -5,7 +5,7 @@
  * @module
  *
  * Licensed by under the W3C Software and Document License, https://www.w3.org/Consortium/Legal/copyright-software.
- * Copyright ©2024 World Wide Web Consortium. https://www.w3.org/copyright/software-license-2023/
+ * Copyright ©2025 World Wide Web Consortium. https://www.w3.org/copyright/software-license-2023/
  */
 
 import * as convert                             from './lib/convert.ts';
