@@ -7,37 +7,57 @@
   <meta name="doc-current-file" content="">
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="page.css">
-  <link id="ddocResetStylesheet" rel="stylesheet" href="reset.css"><link href="comrak.css" rel="stylesheet" /><link href="prism.css" rel="stylesheet" /><script src="prism.js"></script><script src="search_index.js" defer></script>
-    <script src="script.js" defer></script>
+  <link id="ddocResetStylesheet" rel="stylesheet" href="reset.css"><link href="comrak.css" rel="stylesheet" /><link href="prism.css" rel="stylesheet" /><script src="prism.js"></script><script src="script.js" defer></script>
+  <script src="darkmode_toggle.js"></script><script src="search_index.js" defer></script>
     <script src="fuse.js" defer></script>
     <script src="search.js" defer></script></head>
 <body>
 <div class="ddoc">
-<div><nav class="top-0 sticky bg-white z-50 py-3 h-14" id="topnav">
+<div><nav id="topnav">
   <div class="h-full">
-    <div><ul class="breadcrumbs"><li>&quot;@iherman&#x2F;multikey-webcrypto&quot;</li></ul>
+    <div class="flex items-center"><ul class="breadcrumbs"><li>&quot;@iherman&#x2F;multikey-webcrypto&quot;</li></ul>
 </div>
 
-      <input
-        type="text"
-        id="searchbar"
-        style="display: none;"
-        class="py-2 px-2.5 rounded text-sm border border-gray-300 bg-transparent" />
+    <div class="flex items-center gap-2">
+      <button id="theme-toggle" type="button" aria-label="Toggle dark mode" style="display: none;"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M12 1.992a10 10 0 1 0 9.236 13.838c.341 -.82 -.476 -1.644 -1.298 -1.31a6.5 6.5 0 0 1 -6.864 -10.787l.077 -.08c.551 -.63 .113 -1.653 -.758 -1.653h-.266l-.068 -.006l-.06 -.002z" />
+</svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" class=hidden>
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M12 19a1 1 0 0 1 .993 .883l.007 .117v1a1 1 0 0 1 -1.993 .117l-.007 -.117v-1a1 1 0 0 1 1 -1z" />
+  <path d="M18.313 16.91l.094 .083l.7 .7a1 1 0 0 1 -1.32 1.497l-.094 -.083l-.7 -.7a1 1 0 0 1 1.218 -1.567l.102 .07z" />
+  <path d="M7.007 16.993a1 1 0 0 1 .083 1.32l-.083 .094l-.7 .7a1 1 0 0 1 -1.497 -1.32l.083 -.094l.7 -.7a1 1 0 0 1 1.414 0z" />
+  <path d="M4 11a1 1 0 0 1 .117 1.993l-.117 .007h-1a1 1 0 0 1 -.117 -1.993l.117 -.007h1z" />
+  <path d="M21 11a1 1 0 0 1 .117 1.993l-.117 .007h-1a1 1 0 0 1 -.117 -1.993l.117 -.007h1z" />
+  <path d="M6.213 4.81l.094 .083l.7 .7a1 1 0 0 1 -1.32 1.497l-.094 -.083l-.7 -.7a1 1 0 0 1 1.217 -1.567l.102 .07z" />
+  <path d="M19.107 4.893a1 1 0 0 1 .083 1.32l-.083 .094l-.7 .7a1 1 0 0 1 -1.497 -1.32l.083 -.094l.7 -.7a1 1 0 0 1 1.414 0z" />
+  <path d="M12 2a1 1 0 0 1 .993 .883l.007 .117v1a1 1 0 0 1 -1.993 .117l-.007 -.117v-1a1 1 0 0 1 1 -1z" />
+  <path d="M12 7a5 5 0 1 1 -4.995 5.217l-.005 -.217l.005 -.217a5 5 0 0 1 4.995 -4.783z" />
+</svg>
+</button>
+
+        <input
+          type="text"
+          id="searchbar"
+          style="display: none;"
+          class="py-2 px-2.5 mx-1 rounded text-sm border border-gray-300 bg-transparent dark:bg-gray-800 dark:border-gray-700"
+          />
+    </div>
   </div>
 </nav>
 <div id="searchResults"></div><div id="content">
-    <main><section >
-  <div class="space-y-2 flex-1 "><div class="space-y-7" id="module_doc"><div class="markdown"><p>--- NOT PRODUCTION READY. WOULD NEED INTEROPERABILITY TESTS---</p>
+    <main><section>
+  <div class="space-y-2 flex-1"><div class="space-y-7" id="module_doc"><div class="markdown"><p>--- NOT PRODUCTION READY. WOULD NEED INTEROPERABILITY TESTS---</p>
 <h1 id="multikey-︎-webcrypto-and-jwk-conversions">
 Multikey ↔︎ WebCrypto and JWK conversions</h1>
-<p>Conversion of cryptographic keys in <a href="https://www.w3.org/TR/controller-document/#Multikey">Multikey format</a> to and
-from <a href="https://www.w3.org/TR/WebCryptoAPI/">WebCrypto</a> and <a href="https://datatracker.ietf.org/doc/html/rfc7517">JWK</a>. The conversions are available for the three EC curves that are defined for Verifiable Credentials:
-ECDSA with P-256 and P-384 and EDDSA.</p>
+<p>Conversion of cryptographic keys in <a href="https://www.w3.org/TR/cid/#Multikey">Multikey format</a> to and
+from <a href="https://www.w3.org/TR/WebCryptoAPI/">WebCrypto</a> and <a href="https://datatracker.ietf.org/doc/html/rfc7517">JWK</a>. The conversions are available for the three EC curves that are defined for Verifiable Credentials: ECDSA with P-256 and P-384, and EDDSA.</p>
 <p>The package has been written in TypeScript using <a href="https://deno.land">Deno</a>. It has also been published as an <a href="https://www.npmjs.com/package/multikey-webcrypto">npm package</a>.</p>
 <p>For a more detailed documentation, see the more detailed <a href="https://iherman.github.io/multikey-webcrypto-d/">code documentation</a>, generated by Deno. A short set of examples may help.</p>
 <h2 id="necessary-extra-types-used-by-the-api">
 Necessary extra types used by the API</h2>
-<p>The interface makes use of the <code>JsonWebKey</code>, <code>CryptoKeyPair</code>, and <code>CryptoKey</code> types, which are global types in Deno or Node.js, defined by WebCrypto. The following types are also exported by the package:</p>
+<p>The interface makes use of the <code>JsonWebKey</code>, <code>CryptoKeyPair</code>, and <code>CryptoKey</code> types, which are global types both in Deno and Node.js, defined by WebCrypto. The following types are also exported by the package:</p>
 <pre class="highlight"><code class="language-typescript">export interface JWKKeyPair {
     publicKey: JsonWebKey;    
     privateKey?: JsonWebKey;
@@ -50,7 +70,7 @@ export interface Multikey {
     publicKeyMultibase:  Multibase;
     secretKeyMultibase?: Multibase;
 }
-</code><button class="context_button" data-copy="export interface JWKKeyPair {
+</code><button class="copyButton" data-copy="export interface JWKKeyPair {
     publicKey: JsonWebKey;    
     privateKey?: JsonWebKey;
 }
@@ -65,9 +85,9 @@ export interface Multikey {
 "><svg class="copy" width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
 <rect x="2" y="2" width="7" height="7" fill="none"/>
 <rect x="6" y="6" width="7" height="7" fill="none"/>
-<path d="M1.55566 2.7C1.55566 2.03726 2.09292 1.5 2.75566 1.5H8.75566C9.41841 1.5 9.95566 2.03726 9.95566 2.7V5.1H12.3557C13.0184 5.1 13.5557 5.63726 13.5557 6.3V12.3C13.5557 12.9627 13.0184 13.5 12.3557 13.5H6.35566C5.69292 13.5 5.15566 12.9627 5.15566 12.3V9.9H2.75566C2.09292 9.9 1.55566 9.36274 1.55566 8.7V2.7ZM6.35566 9.9V12.3H12.3557V6.3H9.95566V8.7C9.95566 9.36274 9.41841 9.9 8.75566 9.9H6.35566ZM8.75566 8.7V2.7H2.75566V8.7H8.75566Z" fill="#232323"/>
+<path d="M1.55566 2.7C1.55566 2.03726 2.09292 1.5 2.75566 1.5H8.75566C9.41841 1.5 9.95566 2.03726 9.95566 2.7V5.1H12.3557C13.0184 5.1 13.5557 5.63726 13.5557 6.3V12.3C13.5557 12.9627 13.0184 13.5 12.3557 13.5H6.35566C5.69292 13.5 5.15566 12.9627 5.15566 12.3V9.9H2.75566C2.09292 9.9 1.55566 9.36274 1.55566 8.7V2.7ZM6.35566 9.9V12.3H12.3557V6.3H9.95566V8.7C9.95566 9.36274 9.41841 9.9 8.75566 9.9H6.35566ZM8.75566 8.7V2.7H2.75566V8.7H8.75566Z" fill="currentColor"/>
 </svg>
-<svg class="check" width="15" height="15" viewBox="0 0 24 24" stroke-width="2" stroke="#232323" fill="none" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+<svg class="check" width="15" height="15" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
 <path d="M5 12l5 5l10 -10" />
 </svg>
@@ -76,7 +96,8 @@ export interface Multikey {
 Usage of the API functions</h2>
 <h3 id="multikey-and-jwk">
 Multikey and JWK</h3>
-<pre class="highlight"><code class="language-typescript">import * as mkc from &quot;multikey-webcrypto&quot;;
+<pre class="highlight"><code class="language-typescript">import * as mkc from &quot;npm:@iherman/multikey-webcrypto&quot;;
+// import * as mkc from &quot;jsr:@iherman/multikey-webcrypto&quot;;
 
 // Get a JWK pair
 const jwk_pair: mkc.JWKKeyPair = {
@@ -90,7 +111,8 @@ const mk_pair: mkc.Multikey = mkc.JWKToMultikey(jwk_pair);
 // Convert the multikey back to jwk
 const gen_jwk_pair: mkc.JWKKeyPair = mkc.multikeyToJWK(mk_pair);
 
-</code><button class="context_button" data-copy="import * as mkc from &quot;multikey-webcrypto&quot;;
+</code><button class="copyButton" data-copy="import * as mkc from &quot;npm:@iherman/multikey-webcrypto&quot;;
+// import * as mkc from &quot;jsr:@iherman/multikey-webcrypto&quot;;
 
 // Get a JWK pair
 const jwk_pair: mkc.JWKKeyPair = {
@@ -107,43 +129,45 @@ const gen_jwk_pair: mkc.JWKKeyPair = mkc.multikeyToJWK(mk_pair);
 "><svg class="copy" width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
 <rect x="2" y="2" width="7" height="7" fill="none"/>
 <rect x="6" y="6" width="7" height="7" fill="none"/>
-<path d="M1.55566 2.7C1.55566 2.03726 2.09292 1.5 2.75566 1.5H8.75566C9.41841 1.5 9.95566 2.03726 9.95566 2.7V5.1H12.3557C13.0184 5.1 13.5557 5.63726 13.5557 6.3V12.3C13.5557 12.9627 13.0184 13.5 12.3557 13.5H6.35566C5.69292 13.5 5.15566 12.9627 5.15566 12.3V9.9H2.75566C2.09292 9.9 1.55566 9.36274 1.55566 8.7V2.7ZM6.35566 9.9V12.3H12.3557V6.3H9.95566V8.7C9.95566 9.36274 9.41841 9.9 8.75566 9.9H6.35566ZM8.75566 8.7V2.7H2.75566V8.7H8.75566Z" fill="#232323"/>
+<path d="M1.55566 2.7C1.55566 2.03726 2.09292 1.5 2.75566 1.5H8.75566C9.41841 1.5 9.95566 2.03726 9.95566 2.7V5.1H12.3557C13.0184 5.1 13.5557 5.63726 13.5557 6.3V12.3C13.5557 12.9627 13.0184 13.5 12.3557 13.5H6.35566C5.69292 13.5 5.15566 12.9627 5.15566 12.3V9.9H2.75566C2.09292 9.9 1.55566 9.36274 1.55566 8.7V2.7ZM6.35566 9.9V12.3H12.3557V6.3H9.95566V8.7C9.95566 9.36274 9.41841 9.9 8.75566 9.9H6.35566ZM8.75566 8.7V2.7H2.75566V8.7H8.75566Z" fill="currentColor"/>
 </svg>
-<svg class="check" width="15" height="15" viewBox="0 0 24 24" stroke-width="2" stroke="#232323" fill="none" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+<svg class="check" width="15" height="15" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
 <path d="M5 12l5 5l10 -10" />
 </svg>
 </button><code></code></pre>
 <p>In all cases the secret key may be missing or set to <code>undefined</code>, so that only the public key is converted. The same can be achieved if the functions are used with an overloaded signature:</p>
-<pre class="highlight"><code class="language-typescript">import * as mkc from &quot;multikey-webcrypto&quot;;
+<pre class="highlight"><code class="language-typescript">import * as mkc from &quot;npm:@iherman/multikey-webcrypto&quot;;
+// import * as mkc from &quot;jsr:@iherman/multikey-webcrypto&quot;;
 
 const mk: mkc.Multibase = mkc.JWKToMultikey(your_jwk_public_key);
-// mk the encoded value
+// mk is the encoded value
 
 // Convert the multikey back to jwk
 const gen_jwk_public_key: mkc.JWKKeyPair = mkc.multikeyToJWK(mk);
-</code><button class="context_button" data-copy="import * as mkc from &quot;multikey-webcrypto&quot;;
+</code><button class="copyButton" data-copy="import * as mkc from &quot;npm:@iherman/multikey-webcrypto&quot;;
+// import * as mkc from &quot;jsr:@iherman/multikey-webcrypto&quot;;
 
 const mk: mkc.Multibase = mkc.JWKToMultikey(your_jwk_public_key);
-// mk the encoded value
+// mk is the encoded value
 
 // Convert the multikey back to jwk
 const gen_jwk_public_key: mkc.JWKKeyPair = mkc.multikeyToJWK(mk);
 "><svg class="copy" width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
 <rect x="2" y="2" width="7" height="7" fill="none"/>
 <rect x="6" y="6" width="7" height="7" fill="none"/>
-<path d="M1.55566 2.7C1.55566 2.03726 2.09292 1.5 2.75566 1.5H8.75566C9.41841 1.5 9.95566 2.03726 9.95566 2.7V5.1H12.3557C13.0184 5.1 13.5557 5.63726 13.5557 6.3V12.3C13.5557 12.9627 13.0184 13.5 12.3557 13.5H6.35566C5.69292 13.5 5.15566 12.9627 5.15566 12.3V9.9H2.75566C2.09292 9.9 1.55566 9.36274 1.55566 8.7V2.7ZM6.35566 9.9V12.3H12.3557V6.3H9.95566V8.7C9.95566 9.36274 9.41841 9.9 8.75566 9.9H6.35566ZM8.75566 8.7V2.7H2.75566V8.7H8.75566Z" fill="#232323"/>
+<path d="M1.55566 2.7C1.55566 2.03726 2.09292 1.5 2.75566 1.5H8.75566C9.41841 1.5 9.95566 2.03726 9.95566 2.7V5.1H12.3557C13.0184 5.1 13.5557 5.63726 13.5557 6.3V12.3C13.5557 12.9627 13.0184 13.5 12.3557 13.5H6.35566C5.69292 13.5 5.15566 12.9627 5.15566 12.3V9.9H2.75566C2.09292 9.9 1.55566 9.36274 1.55566 8.7V2.7ZM6.35566 9.9V12.3H12.3557V6.3H9.95566V8.7C9.95566 9.36274 9.41841 9.9 8.75566 9.9H6.35566ZM8.75566 8.7V2.7H2.75566V8.7H8.75566Z" fill="currentColor"/>
 </svg>
-<svg class="check" width="15" height="15" viewBox="0 0 24 24" stroke-width="2" stroke="#232323" fill="none" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+<svg class="check" width="15" height="15" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
 <path d="M5 12l5 5l10 -10" />
 </svg>
 </button><code></code></pre>
 <h3 id="multikey-and-webcrypto-keys">
 Multikey and WebCrypto keys</h3>
-<p>The interface is similar to the JWK case. The only major difference is that functions are asynchronous (the reason is that WebCrypto implementations are asynchronous).
-The simplest approach is to use the <code>await</code> constructs in the code:</p>
-<pre class="highlight"><code class="language-typescript">import * as mkc from &quot;multikey-webcrypto&quot;;
+<p>The interface is similar to the JWK case. The only major difference is that functions are asynchronous (the reason is that WebCrypto implementations are asynchronous). The simplest approach is to use the <code>await</code> constructs in the code:</p>
+<pre class="highlight"><code class="language-typescript">import * as mkc from &quot;npm:@iherman/multikey-webcrypto&quot;;
+// import * as mkc from &quot;jsr:@iherman/multikey-webcrypto&quot;;
 
 // Convert a JWK Pair to a Multikey.
 // Note: the `CryptoKeyPair` interface is defined by the WebCrypto 
@@ -154,11 +178,12 @@ const crypto_pair: CryptoKeyPair = {
 };
 const mk_pair: Multikey = await mkc.cryptoToMultikey(crypto_pair);
 // mk_pair.publicKeyMultibase and mk_pair.secretKeyMultibase 
-// provide the right values
+// are set to the right values
 
 // Convert the multikey back to jwk
 const gen_crypto_pair: mkc.JWKKeyPair = await mkc.multikeyToCrypto(mk_pair);
-</code><button class="context_button" data-copy="import * as mkc from &quot;multikey-webcrypto&quot;;
+</code><button class="copyButton" data-copy="import * as mkc from &quot;npm:@iherman/multikey-webcrypto&quot;;
+// import * as mkc from &quot;jsr:@iherman/multikey-webcrypto&quot;;
 
 // Convert a JWK Pair to a Multikey.
 // Note: the `CryptoKeyPair` interface is defined by the WebCrypto 
@@ -169,41 +194,43 @@ const crypto_pair: CryptoKeyPair = {
 };
 const mk_pair: Multikey = await mkc.cryptoToMultikey(crypto_pair);
 // mk_pair.publicKeyMultibase and mk_pair.secretKeyMultibase 
-// provide the right values
+// are set to the right values
 
 // Convert the multikey back to jwk
 const gen_crypto_pair: mkc.JWKKeyPair = await mkc.multikeyToCrypto(mk_pair);
 "><svg class="copy" width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
 <rect x="2" y="2" width="7" height="7" fill="none"/>
 <rect x="6" y="6" width="7" height="7" fill="none"/>
-<path d="M1.55566 2.7C1.55566 2.03726 2.09292 1.5 2.75566 1.5H8.75566C9.41841 1.5 9.95566 2.03726 9.95566 2.7V5.1H12.3557C13.0184 5.1 13.5557 5.63726 13.5557 6.3V12.3C13.5557 12.9627 13.0184 13.5 12.3557 13.5H6.35566C5.69292 13.5 5.15566 12.9627 5.15566 12.3V9.9H2.75566C2.09292 9.9 1.55566 9.36274 1.55566 8.7V2.7ZM6.35566 9.9V12.3H12.3557V6.3H9.95566V8.7C9.95566 9.36274 9.41841 9.9 8.75566 9.9H6.35566ZM8.75566 8.7V2.7H2.75566V8.7H8.75566Z" fill="#232323"/>
+<path d="M1.55566 2.7C1.55566 2.03726 2.09292 1.5 2.75566 1.5H8.75566C9.41841 1.5 9.95566 2.03726 9.95566 2.7V5.1H12.3557C13.0184 5.1 13.5557 5.63726 13.5557 6.3V12.3C13.5557 12.9627 13.0184 13.5 12.3557 13.5H6.35566C5.69292 13.5 5.15566 12.9627 5.15566 12.3V9.9H2.75566C2.09292 9.9 1.55566 9.36274 1.55566 8.7V2.7ZM6.35566 9.9V12.3H12.3557V6.3H9.95566V8.7C9.95566 9.36274 9.41841 9.9 8.75566 9.9H6.35566ZM8.75566 8.7V2.7H2.75566V8.7H8.75566Z" fill="currentColor"/>
 </svg>
-<svg class="check" width="15" height="15" viewBox="0 0 24 24" stroke-width="2" stroke="#232323" fill="none" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+<svg class="check" width="15" height="15" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
 <path d="M5 12l5 5l10 -10" />
 </svg>
 </button><code></code></pre>
 <p>Similarly to the JWK case, handling public keys only can be done with the aliased versions of the same functions:</p>
-<pre class="highlight"><code class="language-typescript">import * as mkc from &quot;multikey-webcrypto&quot;;
+<pre class="highlight"><code class="language-typescript">import * as mkc from &quot;npm:@iherman/multikey-webcrypto&quot;;
+// import * as mkc from &quot;jsr:@iherman/multikey-webcrypto&quot;;
 
 const mk: Multibase = mkc.cryptoToMultikey(your_web_crypto_public_key);
-// mk the encoded value
+// mk is the encoded value
 
 // Convert the multikey back to jwk
 const gen_crypto_key: JWKKeyPair = mkc.multikeyToJWK(mk);
-</code><button class="context_button" data-copy="import * as mkc from &quot;multikey-webcrypto&quot;;
+</code><button class="copyButton" data-copy="import * as mkc from &quot;npm:@iherman/multikey-webcrypto&quot;;
+// import * as mkc from &quot;jsr:@iherman/multikey-webcrypto&quot;;
 
 const mk: Multibase = mkc.cryptoToMultikey(your_web_crypto_public_key);
-// mk the encoded value
+// mk is the encoded value
 
 // Convert the multikey back to jwk
 const gen_crypto_key: JWKKeyPair = mkc.multikeyToJWK(mk);
 "><svg class="copy" width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
 <rect x="2" y="2" width="7" height="7" fill="none"/>
 <rect x="6" y="6" width="7" height="7" fill="none"/>
-<path d="M1.55566 2.7C1.55566 2.03726 2.09292 1.5 2.75566 1.5H8.75566C9.41841 1.5 9.95566 2.03726 9.95566 2.7V5.1H12.3557C13.0184 5.1 13.5557 5.63726 13.5557 6.3V12.3C13.5557 12.9627 13.0184 13.5 12.3557 13.5H6.35566C5.69292 13.5 5.15566 12.9627 5.15566 12.3V9.9H2.75566C2.09292 9.9 1.55566 9.36274 1.55566 8.7V2.7ZM6.35566 9.9V12.3H12.3557V6.3H9.95566V8.7C9.95566 9.36274 9.41841 9.9 8.75566 9.9H6.35566ZM8.75566 8.7V2.7H2.75566V8.7H8.75566Z" fill="#232323"/>
+<path d="M1.55566 2.7C1.55566 2.03726 2.09292 1.5 2.75566 1.5H8.75566C9.41841 1.5 9.95566 2.03726 9.95566 2.7V5.1H12.3557C13.0184 5.1 13.5557 5.63726 13.5557 6.3V12.3C13.5557 12.9627 13.0184 13.5 12.3557 13.5H6.35566C5.69292 13.5 5.15566 12.9627 5.15566 12.3V9.9H2.75566C2.09292 9.9 1.55566 9.36274 1.55566 8.7V2.7ZM6.35566 9.9V12.3H12.3557V6.3H9.95566V8.7C9.95566 9.36274 9.41841 9.9 8.75566 9.9H6.35566ZM8.75566 8.7V2.7H2.75566V8.7H8.75566Z" fill="currentColor"/>
 </svg>
-<svg class="check" width="15" height="15" viewBox="0 0 24 24" stroke-width="2" stroke="#232323" fill="none" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+<svg class="check" width="15" height="15" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
 <path d="M5 12l5 5l10 -10" />
 </svg>
@@ -215,24 +242,34 @@ const gen_crypto_key: JWKKeyPair = mkc.multikeyToJWK(mk);
     <div><nav class="topSymbols">
           <h3>Symbols</h3>
           <ul><li>
-                <a href=".&#x2F;.&#x2F;~&#x2F;JWKKeyPair.html" title="JWKKeyPair"><div class="docNodeKindIcon"><div class="text-Interface bg-Interface/15" title="Interface">I</div></div>
-<span class="hover:bg-Interface/15">JWKKeyPair</span>
+                <a href=".&#x2F;lib&#x2F;common.ts&#x2F;~&#x2F;JWKKeyPair.html" title="JWKKeyPair"><div class="docNodeKindIcon"><div class="text-Interface bg-Interface/15 dark:text-InterfaceDark dark:bg-InterfaceDark/15" title="Interface">I</div></div>
+<span class="hover:bg-Interface/15 hover:bg-InterfaceDark/15">
+                    JWKKeyPair
+                  </span>
                 </a>
               </li><li>
-                <a href=".&#x2F;.&#x2F;~&#x2F;JWKToMultikey.html" title="JWKToMultikey"><div class="docNodeKindIcon"><div class="text-Function bg-Function/15" title="Function">f</div></div>
-<span class="hover:bg-Function/15">JWKToMultikey</span>
+                <a href=".&#x2F;.&#x2F;~&#x2F;JWKToMultikey.html" title="JWKToMultikey"><div class="docNodeKindIcon"><div class="text-Function bg-Function/15 dark:text-FunctionDark dark:bg-FunctionDark/15" title="Function">f</div></div>
+<span class="hover:bg-Function/15 hover:bg-FunctionDark/15">
+                    JWKToMultikey
+                  </span>
                 </a>
               </li><li>
-                <a href=".&#x2F;.&#x2F;~&#x2F;Multibase.html" title="Multibase"><div class="docNodeKindIcon"><div class="text-TypeAlias bg-TypeAlias/15" title="Type Alias">T</div></div>
-<span class="hover:bg-TypeAlias/15">Multibase</span>
+                <a href=".&#x2F;lib&#x2F;common.ts&#x2F;~&#x2F;Multibase.html" title="Multibase"><div class="docNodeKindIcon"><div class="text-TypeAlias bg-TypeAlias/15 dark:text-TypeAliasDark dark:bg-TypeAliasDark/15" title="Type Alias">T</div></div>
+<span class="hover:bg-TypeAlias/15 hover:bg-TypeAliasDark/15">
+                    Multibase
+                  </span>
                 </a>
               </li><li>
-                <a href=".&#x2F;.&#x2F;~&#x2F;Multikey.html" title="Multikey"><div class="docNodeKindIcon"><div class="text-Interface bg-Interface/15" title="Interface">I</div></div>
-<span class="hover:bg-Interface/15">Multikey</span>
+                <a href=".&#x2F;lib&#x2F;common.ts&#x2F;~&#x2F;Multikey.html" title="Multikey"><div class="docNodeKindIcon"><div class="text-Interface bg-Interface/15 dark:text-InterfaceDark dark:bg-InterfaceDark/15" title="Interface">I</div></div>
+<span class="hover:bg-Interface/15 hover:bg-InterfaceDark/15">
+                    Multikey
+                  </span>
                 </a>
               </li><li>
-                <a href=".&#x2F;.&#x2F;~&#x2F;cryptoToMultikey.html" title="cryptoToMultikey"><div class="docNodeKindIcon"><div class="text-Function bg-Function/15" title="Function">f</div></div>
-<span class="hover:bg-Function/15">cryptoToMultikey</span>
+                <a href=".&#x2F;.&#x2F;~&#x2F;cryptoToMultikey.html" title="cryptoToMultikey"><div class="docNodeKindIcon"><div class="text-Function bg-Function/15 dark:text-FunctionDark dark:bg-FunctionDark/15" title="Function">f</div></div>
+<span class="hover:bg-Function/15 hover:bg-FunctionDark/15">
+                    cryptoToMultikey
+                  </span>
                 </a>
               </li></ul><a class="flex items-center gap-0.5" href=".&#x2F;all_symbols.html">
               <span class="leading-none">view all 32 symbols</span><svg

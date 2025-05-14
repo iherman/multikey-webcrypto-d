@@ -7,15 +7,15 @@
   <meta name="doc-current-file" content="">
   <link rel="stylesheet" href="..&#x2F;..&#x2F;styles.css">
   <link rel="stylesheet" href="..&#x2F;..&#x2F;page.css">
-  <link id="ddocResetStylesheet" rel="stylesheet" href="..&#x2F;..&#x2F;reset.css"><link href="../../comrak.css" rel="stylesheet" /><link href="../../prism.css" rel="stylesheet" /><script src="../../prism.js"></script><script src="..&#x2F;..&#x2F;search_index.js" defer></script>
-    <script src="..&#x2F;..&#x2F;script.js" defer></script>
+  <link id="ddocResetStylesheet" rel="stylesheet" href="..&#x2F;..&#x2F;reset.css"><link href="../../comrak.css" rel="stylesheet" /><link href="../../prism.css" rel="stylesheet" /><script src="../../prism.js"></script><script src="..&#x2F;..&#x2F;script.js" defer></script>
+  <script src="..&#x2F;..&#x2F;darkmode_toggle.js"></script><script src="..&#x2F;..&#x2F;search_index.js" defer></script>
     <script src="..&#x2F;..&#x2F;fuse.js" defer></script>
     <script src="..&#x2F;..&#x2F;search.js" defer></script></head>
 <body>
 <div class="ddoc">
-<div><nav class="top-0 sticky bg-white z-50 py-3 h-14" id="topnav">
+<div><nav id="topnav">
   <div class="h-full">
-    <div><ul class="breadcrumbs"><li><a href="..&#x2F;..&#x2F;" class="contextLink">&quot;@iherman&#x2F;multikey-webcrypto&quot;</a></li><span class="text-[#0F172A]"><svg
+    <div class="flex items-center"><ul class="breadcrumbs"><li><a href="..&#x2F;..&#x2F;" class="contextLink">&quot;@iherman&#x2F;multikey-webcrypto&quot;</a></li><span class="text-black dark:text-white"><svg
 	width="16"
 	height="16"
 	viewBox="0 0 16 16"
@@ -26,21 +26,41 @@
 </span><li>lib&#x2F;common.ts</li></ul>
 </div>
 
-      <input
-        type="text"
-        id="searchbar"
-        style="display: none;"
-        class="py-2 px-2.5 rounded text-sm border border-gray-300 bg-transparent" />
+    <div class="flex items-center gap-2">
+      <button id="theme-toggle" type="button" aria-label="Toggle dark mode" style="display: none;"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M12 1.992a10 10 0 1 0 9.236 13.838c.341 -.82 -.476 -1.644 -1.298 -1.31a6.5 6.5 0 0 1 -6.864 -10.787l.077 -.08c.551 -.63 .113 -1.653 -.758 -1.653h-.266l-.068 -.006l-.06 -.002z" />
+</svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" class=hidden>
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M12 19a1 1 0 0 1 .993 .883l.007 .117v1a1 1 0 0 1 -1.993 .117l-.007 -.117v-1a1 1 0 0 1 1 -1z" />
+  <path d="M18.313 16.91l.094 .083l.7 .7a1 1 0 0 1 -1.32 1.497l-.094 -.083l-.7 -.7a1 1 0 0 1 1.218 -1.567l.102 .07z" />
+  <path d="M7.007 16.993a1 1 0 0 1 .083 1.32l-.083 .094l-.7 .7a1 1 0 0 1 -1.497 -1.32l.083 -.094l.7 -.7a1 1 0 0 1 1.414 0z" />
+  <path d="M4 11a1 1 0 0 1 .117 1.993l-.117 .007h-1a1 1 0 0 1 -.117 -1.993l.117 -.007h1z" />
+  <path d="M21 11a1 1 0 0 1 .117 1.993l-.117 .007h-1a1 1 0 0 1 -.117 -1.993l.117 -.007h1z" />
+  <path d="M6.213 4.81l.094 .083l.7 .7a1 1 0 0 1 -1.32 1.497l-.094 -.083l-.7 -.7a1 1 0 0 1 1.217 -1.567l.102 .07z" />
+  <path d="M19.107 4.893a1 1 0 0 1 .083 1.32l-.083 .094l-.7 .7a1 1 0 0 1 -1.497 -1.32l.083 -.094l.7 -.7a1 1 0 0 1 1.414 0z" />
+  <path d="M12 2a1 1 0 0 1 .993 .883l.007 .117v1a1 1 0 0 1 -1.993 .117l-.007 -.117v-1a1 1 0 0 1 1 -1z" />
+  <path d="M12 7a5 5 0 1 1 -4.995 5.217l-.005 -.217l.005 -.217a5 5 0 0 1 4.995 -4.783z" />
+</svg>
+</button>
+
+        <input
+          type="text"
+          id="searchbar"
+          style="display: none;"
+          class="py-2 px-2.5 mx-1 rounded text-sm border border-gray-300 bg-transparent dark:bg-gray-800 dark:border-gray-700"
+          />
+    </div>
   </div>
 </nav>
 <div id="searchResults"></div><div id="content">
-    <main><section >
-  <div class="space-y-2 flex-1 "><div class="space-y-7" id="module_doc"><div class="markdown"><p>Common types, conversion functions and Multikey conversion utilities for the rest of the code.</p>
+    <main><section>
+  <div class="space-y-2 flex-1"><div class="space-y-7" id="module_doc"><div class="markdown"><p>Common types, conversion functions and Multikey conversion utilities for the rest of the code.</p>
 <p>Licensed by under the W3C Software and Document License, <a href="https://www.w3.org/Consortium/Legal/copyright-software">https://www.w3.org/Consortium/Legal/copyright-software</a>.
-Copyright ©2024 World Wide Web Consortium. <a href="https://www.w3.org/copyright/software-license-2023/">https://www.w3.org/copyright/software-license-2023/</a></p>
-</div><section class="section" id="Enums">
-  <div>
-	  <h2 class="anchorable mb-1"><a href="#Enums" class="anchor" aria-label="Anchor" tabIndex="-1"><svg
+Copyright ©2025 World Wide Web Consortium. <a href="https://www.w3.org/copyright/software-license-2023/">https://www.w3.org/copyright/software-license-2023/</a></p>
+</div><section class="section"  id="Enums"><div>
+      <h2 class="anchorable mb-1"><a href="#Enums" class="anchor" aria-label="Anchor" tabIndex="-1"><svg
   width="16"
   height="16"
   viewBox="0 0 14 14"
@@ -62,13 +82,13 @@ Copyright ©2024 World Wide Web Consortium. <a href="https://www.w3.org/copyrigh
   </defs>
 </svg>
 </a>
-Enums</h2></div><div class="namespaceSection"><div id="namespace_cryptocurves" class="namespaceItem" ><div class="docNodeKindIcon"><div class="text-Enum bg-Enum/15" title="Enum">E</div></div>
+Enums</h2></div><div class="namespaceSection"><div id="namespace_cryptocurves" class="namespaceItem" ><div class="docNodeKindIcon"><div class="text-Enum bg-Enum/15 dark:text-EnumDark dark:bg-EnumDark/15" title="Enum">E</div></div>
 <div class="namespaceItemContent">
 		    <a href="..&#x2F;..&#x2F;.&#x2F;lib&#x2F;common.ts&#x2F;~&#x2F;CryptoCurves.html" title="CryptoCurves">CryptoCurves</a>
 
 	      <div class="namespaceItemContentDoc"><div class="markdown_summary"><p>Names for the various crypto curves</p>
 </div></div></div>
-    </div><div id="namespace_cryptokeytypes" class="namespaceItem" ><div class="docNodeKindIcon"><div class="text-Enum bg-Enum/15" title="Enum">E</div></div>
+    </div><div id="namespace_cryptokeytypes" class="namespaceItem" ><div class="docNodeKindIcon"><div class="text-Enum bg-Enum/15 dark:text-EnumDark dark:bg-EnumDark/15" title="Enum">E</div></div>
 <div class="namespaceItemContent">
 		    <a href="..&#x2F;..&#x2F;.&#x2F;lib&#x2F;common.ts&#x2F;~&#x2F;CryptoKeyTypes.html" title="CryptoKeyTypes">CryptoKeyTypes</a>
 
@@ -76,9 +96,8 @@ Enums</h2></div><div class="namespaceSection"><div id="namespace_cryptocurves" c
 </div></div></div>
     </div></div>
 </section>
-<section class="section" id="Functions">
-  <div>
-	  <h2 class="anchorable mb-1"><a href="#Functions" class="anchor" aria-label="Anchor" tabIndex="-1"><svg
+<section class="section"  id="Functions"><div>
+      <h2 class="anchorable mb-1"><a href="#Functions" class="anchor" aria-label="Anchor" tabIndex="-1"><svg
   width="16"
   height="16"
   viewBox="0 0 14 14"
@@ -100,7 +119,7 @@ Enums</h2></div><div class="namespaceSection"><div id="namespace_cryptocurves" c
   </defs>
 </svg>
 </a>
-Functions</h2></div><div class="namespaceSection"><div id="namespace_preambletocryptodata" class="namespaceItem" ><div class="docNodeKindIcon"><div class="text-Function bg-Function/15" title="Function">f</div></div>
+Functions</h2></div><div class="namespaceSection"><div id="namespace_preambletocryptodata" class="namespaceItem" ><div class="docNodeKindIcon"><div class="text-Function bg-Function/15 dark:text-FunctionDark dark:bg-FunctionDark/15" title="Function">f</div></div>
 <div class="namespaceItemContent">
 		    <a href="..&#x2F;..&#x2F;.&#x2F;lib&#x2F;common.ts&#x2F;~&#x2F;preambleToCryptoData.html" title="preambleToCryptoData">preambleToCryptoData</a>
 
@@ -110,9 +129,8 @@ the additional reference to the exact curve.</p>
 </div></div></div>
     </div></div>
 </section>
-<section class="section" id="Interfaces">
-  <div>
-	  <h2 class="anchorable mb-1"><a href="#Interfaces" class="anchor" aria-label="Anchor" tabIndex="-1"><svg
+<section class="section"  id="Interfaces"><div>
+      <h2 class="anchorable mb-1"><a href="#Interfaces" class="anchor" aria-label="Anchor" tabIndex="-1"><svg
   width="16"
   height="16"
   viewBox="0 0 14 14"
@@ -134,26 +152,26 @@ the additional reference to the exact curve.</p>
   </defs>
 </svg>
 </a>
-Interfaces</h2></div><div class="namespaceSection"><div id="namespace_cryptokeydata" class="namespaceItem" ><div class="docNodeKindIcon"><div class="text-Interface bg-Interface/15" title="Interface">I</div></div>
+Interfaces</h2></div><div class="namespaceSection"><div id="namespace_cryptokeydata" class="namespaceItem" ><div class="docNodeKindIcon"><div class="text-Interface bg-Interface/15 dark:text-InterfaceDark dark:bg-InterfaceDark/15" title="Interface">I</div></div>
 <div class="namespaceItemContent">
 		    <a href="..&#x2F;..&#x2F;.&#x2F;lib&#x2F;common.ts&#x2F;~&#x2F;CryptoKeyData.html" title="CryptoKeyData">CryptoKeyData</a>
 
 	      <div class="namespaceItemContentDoc"><div class="markdown_summary"><p>This is an internal type, used for the implementation: return the crypto curve and type from a multikey preamble.</p>
 </div></div><ul class="namespaceItemContentSubItems"><li><a href="..&#x2F;..&#x2F;.&#x2F;lib&#x2F;common.ts&#x2F;~&#x2F;CryptoKeyData.html#property_crcurve">crCurve</a></li><li><a href="..&#x2F;..&#x2F;.&#x2F;lib&#x2F;common.ts&#x2F;~&#x2F;CryptoKeyData.html#property_crtype">crType</a></li></ul></div>
-    </div><div id="namespace_jwkkeypair" class="namespaceItem" ><div class="docNodeKindIcon"><div class="text-Interface bg-Interface/15" title="Interface">I</div></div>
+    </div><div id="namespace_jwkkeypair" class="namespaceItem" ><div class="docNodeKindIcon"><div class="text-Interface bg-Interface/15 dark:text-InterfaceDark dark:bg-InterfaceDark/15" title="Interface">I</div></div>
 <div class="namespaceItemContent">
 		    <a href="..&#x2F;..&#x2F;.&#x2F;lib&#x2F;common.ts&#x2F;~&#x2F;JWKKeyPair.html" title="JWKKeyPair">JWKKeyPair</a>
 
 	      <div class="namespaceItemContentDoc"><div class="markdown_summary"><p>Public/secret pair of JWK instances</p>
 </div></div><ul class="namespaceItemContentSubItems"><li><a href="..&#x2F;..&#x2F;.&#x2F;lib&#x2F;common.ts&#x2F;~&#x2F;JWKKeyPair.html#property_privatekey">privateKey</a></li><li><a href="..&#x2F;..&#x2F;.&#x2F;lib&#x2F;common.ts&#x2F;~&#x2F;JWKKeyPair.html#property_publickey">publicKey</a></li></ul></div>
-    </div><div id="namespace_multikey" class="namespaceItem" ><div class="docNodeKindIcon"><div class="text-Interface bg-Interface/15" title="Interface">I</div></div>
+    </div><div id="namespace_multikey" class="namespaceItem" ><div class="docNodeKindIcon"><div class="text-Interface bg-Interface/15 dark:text-InterfaceDark dark:bg-InterfaceDark/15" title="Interface">I</div></div>
 <div class="namespaceItemContent">
 		    <a href="..&#x2F;..&#x2F;.&#x2F;lib&#x2F;common.ts&#x2F;~&#x2F;Multikey.html" title="Multikey">Multikey</a>
 
 	      <div class="namespaceItemContentDoc"><div class="markdown_summary"><p>Pair of keys in Multibase encoding. Using the field names as defined in the
 <a href="https://www.w3.org/TR/controller-document/#multikey">Multikey specification</a>.</p>
 </div></div><ul class="namespaceItemContentSubItems"><li><a href="..&#x2F;..&#x2F;.&#x2F;lib&#x2F;common.ts&#x2F;~&#x2F;Multikey.html#property_publickeymultibase">publicKeyMultibase</a></li><li><a href="..&#x2F;..&#x2F;.&#x2F;lib&#x2F;common.ts&#x2F;~&#x2F;Multikey.html#property_secretkeymultibase">secretKeyMultibase</a></li></ul></div>
-    </div><div id="namespace_multikeybinary" class="namespaceItem" ><div class="docNodeKindIcon"><div class="text-Interface bg-Interface/15" title="Interface">I</div></div>
+    </div><div id="namespace_multikeybinary" class="namespaceItem" ><div class="docNodeKindIcon"><div class="text-Interface bg-Interface/15 dark:text-InterfaceDark dark:bg-InterfaceDark/15" title="Interface">I</div></div>
 <div class="namespaceItemContent">
 		    <a href="..&#x2F;..&#x2F;.&#x2F;lib&#x2F;common.ts&#x2F;~&#x2F;MultikeyBinary.html" title="MultikeyBinary">MultikeyBinary</a>
 
@@ -161,9 +179,8 @@ Interfaces</h2></div><div class="namespaceSection"><div id="namespace_cryptokeyd
 </div></div><ul class="namespaceItemContentSubItems"><li><a href="..&#x2F;..&#x2F;.&#x2F;lib&#x2F;common.ts&#x2F;~&#x2F;MultikeyBinary.html#property_public">public</a></li><li><a href="..&#x2F;..&#x2F;.&#x2F;lib&#x2F;common.ts&#x2F;~&#x2F;MultikeyBinary.html#property_secret">secret</a></li></ul></div>
     </div></div>
 </section>
-<section class="section" id="Type Aliases">
-  <div>
-	  <h2 class="anchorable mb-1"><a href="#Type Aliases" class="anchor" aria-label="Anchor" tabIndex="-1"><svg
+<section class="section"  id="Type Aliases"><div>
+      <h2 class="anchorable mb-1"><a href="#Type Aliases" class="anchor" aria-label="Anchor" tabIndex="-1"><svg
   width="16"
   height="16"
   viewBox="0 0 14 14"
@@ -185,31 +202,31 @@ Interfaces</h2></div><div class="namespaceSection"><div id="namespace_cryptokeyd
   </defs>
 </svg>
 </a>
-Type Aliases</h2></div><div class="namespaceSection"><div id="namespace_classtodecoder" class="namespaceItem" ><div class="docNodeKindIcon"><div class="text-TypeAlias bg-TypeAlias/15" title="Type Alias">T</div></div>
+Type Aliases</h2></div><div class="namespaceSection"><div id="namespace_classtodecoder" class="namespaceItem" ><div class="docNodeKindIcon"><div class="text-TypeAlias bg-TypeAlias/15 dark:text-TypeAliasDark dark:bg-TypeAliasDark/15" title="Type Alias">T</div></div>
 <div class="namespaceItemContent">
 		    <a href="..&#x2F;..&#x2F;.&#x2F;lib&#x2F;common.ts&#x2F;~&#x2F;ClassToDecoder.html" title="ClassToDecoder">ClassToDecoder</a>
 
 	      <div class="namespaceItemContentDoc"><div class="markdown_summary"><p>Type definition for the table mapping curves to their decoder functions (i.e., mapping the Multikey to JWK).</p>
 </div></div></div>
-    </div><div id="namespace_classtoencoder" class="namespaceItem" ><div class="docNodeKindIcon"><div class="text-TypeAlias bg-TypeAlias/15" title="Type Alias">T</div></div>
+    </div><div id="namespace_classtoencoder" class="namespaceItem" ><div class="docNodeKindIcon"><div class="text-TypeAlias bg-TypeAlias/15 dark:text-TypeAliasDark dark:bg-TypeAliasDark/15" title="Type Alias">T</div></div>
 <div class="namespaceItemContent">
 		    <a href="..&#x2F;..&#x2F;.&#x2F;lib&#x2F;common.ts&#x2F;~&#x2F;ClassToEncoder.html" title="ClassToEncoder">ClassToEncoder</a>
 
 	      <div class="namespaceItemContentDoc"><div class="markdown_summary"><p>Type definition for the table mapping curves to their encoder functions (i.e., mapping the JWK to Multikey).</p>
 </div></div></div>
-    </div><div id="namespace_classtopreamble" class="namespaceItem" ><div class="docNodeKindIcon"><div class="text-TypeAlias bg-TypeAlias/15" title="Type Alias">T</div></div>
+    </div><div id="namespace_classtopreamble" class="namespaceItem" ><div class="docNodeKindIcon"><div class="text-TypeAlias bg-TypeAlias/15 dark:text-TypeAliasDark dark:bg-TypeAliasDark/15" title="Type Alias">T</div></div>
 <div class="namespaceItemContent">
 		    <a href="..&#x2F;..&#x2F;.&#x2F;lib&#x2F;common.ts&#x2F;~&#x2F;ClassToPreamble.html" title="ClassToPreamble">ClassToPreamble</a>
 
 	      <div class="namespaceItemContentDoc"><div class="markdown_summary"><p>Type definition for the table mapping preambles to a specific curve.</p>
 </div></div></div>
-    </div><div id="namespace_multibase" class="namespaceItem" ><div class="docNodeKindIcon"><div class="text-TypeAlias bg-TypeAlias/15" title="Type Alias">T</div></div>
+    </div><div id="namespace_multibase" class="namespaceItem" ><div class="docNodeKindIcon"><div class="text-TypeAlias bg-TypeAlias/15 dark:text-TypeAliasDark dark:bg-TypeAliasDark/15" title="Type Alias">T</div></div>
 <div class="namespaceItemContent">
 		    <a href="..&#x2F;..&#x2F;.&#x2F;lib&#x2F;common.ts&#x2F;~&#x2F;Multibase.html" title="Multibase">Multibase</a>
 
 	      <div class="namespaceItemContentDoc"><div class="markdown_summary"><p>Type for a Multibase</p>
 </div></div></div>
-    </div><div id="namespace_preamble" class="namespaceItem" ><div class="docNodeKindIcon"><div class="text-TypeAlias bg-TypeAlias/15" title="Type Alias">T</div></div>
+    </div><div id="namespace_preamble" class="namespaceItem" ><div class="docNodeKindIcon"><div class="text-TypeAlias bg-TypeAlias/15 dark:text-TypeAliasDark dark:bg-TypeAliasDark/15" title="Type Alias">T</div></div>
 <div class="namespaceItemContent">
 		    <a href="..&#x2F;..&#x2F;.&#x2F;lib&#x2F;common.ts&#x2F;~&#x2F;Preamble.html" title="Preamble">Preamble</a>
 
@@ -217,9 +234,8 @@ Type Aliases</h2></div><div class="namespaceSection"><div id="namespace_classtod
 </div></div></div>
     </div></div>
 </section>
-<section class="section" id="Variables">
-  <div>
-	  <h2 class="anchorable mb-1"><a href="#Variables" class="anchor" aria-label="Anchor" tabIndex="-1"><svg
+<section class="section"  id="Variables"><div>
+      <h2 class="anchorable mb-1"><a href="#Variables" class="anchor" aria-label="Anchor" tabIndex="-1"><svg
   width="16"
   height="16"
   viewBox="0 0 14 14"
@@ -241,44 +257,44 @@ Type Aliases</h2></div><div class="namespaceSection"><div id="namespace_classtod
   </defs>
 </svg>
 </a>
-Variables</h2></div><div class="namespaceSection"><div id="namespace_classtodecoder-1" class="namespaceItem" ><div class="docNodeKindIcon"><div class="text-Variable bg-Variable/15" title="Variable">v</div></div>
+Variables</h2></div><div class="namespaceSection"><div id="namespace_classtodecoder-1" class="namespaceItem" ><div class="docNodeKindIcon"><div class="text-Variable bg-Variable/15 dark:text-VariableDark dark:bg-VariableDark/15" title="Variable">v</div></div>
 <div class="namespaceItemContent">
 		    <a href="..&#x2F;..&#x2F;.&#x2F;lib&#x2F;common.ts&#x2F;~&#x2F;classToDecoder.html" title="classToDecoder">classToDecoder</a>
 
 	      <div class="namespaceItemContentDoc"><div class="markdown_summary"><p>What coder function must be used to convert from Multikey to JWK (data)?</p>
 </div></div></div>
-    </div><div id="namespace_classtoencoder-1" class="namespaceItem" ><div class="docNodeKindIcon"><div class="text-Variable bg-Variable/15" title="Variable">v</div></div>
+    </div><div id="namespace_classtoencoder-1" class="namespaceItem" ><div class="docNodeKindIcon"><div class="text-Variable bg-Variable/15 dark:text-VariableDark dark:bg-VariableDark/15" title="Variable">v</div></div>
 <div class="namespaceItemContent">
 		    <a href="..&#x2F;..&#x2F;.&#x2F;lib&#x2F;common.ts&#x2F;~&#x2F;classToEncoder.html" title="classToEncoder">classToEncoder</a>
 
 	      <div class="namespaceItemContentDoc"><div class="markdown_summary"><p>What coder function must be used to convert from JWK to Multikey?</p>
 </div></div></div>
-    </div><div id="namespace_classtopreamble-1" class="namespaceItem" ><div class="docNodeKindIcon"><div class="text-Variable bg-Variable/15" title="Variable">v</div></div>
+    </div><div id="namespace_classtopreamble-1" class="namespaceItem" ><div class="docNodeKindIcon"><div class="text-Variable bg-Variable/15 dark:text-VariableDark dark:bg-VariableDark/15" title="Variable">v</div></div>
 <div class="namespaceItemContent">
 		    <a href="..&#x2F;..&#x2F;.&#x2F;lib&#x2F;common.ts&#x2F;~&#x2F;classToPreamble.html" title="classToPreamble">classToPreamble</a>
 
 	      <div class="namespaceItemContentDoc"><div class="markdown_summary"><p>What preambles must be used for a Curve?</p>
 </div></div></div>
-    </div><div id="namespace_ecdsa256preambles" class="namespaceItem" ><div class="docNodeKindIcon"><div class="text-Variable bg-Variable/15" title="Variable">v</div></div>
+    </div><div id="namespace_ecdsa256preambles" class="namespaceItem" ><div class="docNodeKindIcon"><div class="text-Variable bg-Variable/15 dark:text-VariableDark dark:bg-VariableDark/15" title="Variable">v</div></div>
 <div class="namespaceItemContent">
 		    <a href="..&#x2F;..&#x2F;.&#x2F;lib&#x2F;common.ts&#x2F;~&#x2F;Ecdsa256Preambles.html" title="Ecdsa256Preambles">Ecdsa256Preambles</a>
 
 	      <div class="namespaceItemContentDoc"><div class="markdown_summary"><p>Preamble for ECDSA <code>P-256</code>, a.k.a. <code>secp256r1</code> curve</p>
 </div></div></div>
-    </div><div id="namespace_ecdsa384preambles" class="namespaceItem" ><div class="docNodeKindIcon"><div class="text-Variable bg-Variable/15" title="Variable">v</div></div>
+    </div><div id="namespace_ecdsa384preambles" class="namespaceItem" ><div class="docNodeKindIcon"><div class="text-Variable bg-Variable/15 dark:text-VariableDark dark:bg-VariableDark/15" title="Variable">v</div></div>
 <div class="namespaceItemContent">
 		    <a href="..&#x2F;..&#x2F;.&#x2F;lib&#x2F;common.ts&#x2F;~&#x2F;Ecdsa384Preambles.html" title="Ecdsa384Preambles">Ecdsa384Preambles</a>
 
 	      <div class="namespaceItemContentDoc"><div class="markdown_summary"><p>Preamble for ECDSA <code>P-384</code>, a.k.a. <code>secp384r1</code> curve</p>
 </div></div></div>
-    </div><div id="namespace_ecdsacurves" class="namespaceItem" ><div class="docNodeKindIcon"><div class="text-Variable bg-Variable/15" title="Variable">v</div></div>
+    </div><div id="namespace_ecdsacurves" class="namespaceItem" ><div class="docNodeKindIcon"><div class="text-Variable bg-Variable/15 dark:text-VariableDark dark:bg-VariableDark/15" title="Variable">v</div></div>
 <div class="namespaceItemContent">
 		    <a href="..&#x2F;..&#x2F;.&#x2F;lib&#x2F;common.ts&#x2F;~&#x2F;ECDSACurves.html" title="ECDSACurves">ECDSACurves</a>
 
 	      <div class="namespaceItemContentDoc"><div class="markdown_summary"><p>List of possible ECDSA Curves. Having this here declaratively may make it easier if
 in the future, a new curve is added to the family (P-512)?</p>
 </div></div></div>
-    </div><div id="namespace_eddsapreambles" class="namespaceItem" ><div class="docNodeKindIcon"><div class="text-Variable bg-Variable/15" title="Variable">v</div></div>
+    </div><div id="namespace_eddsapreambles" class="namespaceItem" ><div class="docNodeKindIcon"><div class="text-Variable bg-Variable/15 dark:text-VariableDark dark:bg-VariableDark/15" title="Variable">v</div></div>
 <div class="namespaceItemContent">
 		    <a href="..&#x2F;..&#x2F;.&#x2F;lib&#x2F;common.ts&#x2F;~&#x2F;EddsaPreambles.html" title="EddsaPreambles">EddsaPreambles</a>
 
@@ -292,13 +308,13 @@ in the future, a new curve is added to the family (P-512)?</p>
 </main><div class="toc">
     <div><div class="usageContent">
     <h3>Usage</h3><div class="markdown"><pre class="highlight"><code class="language-typescript">import * as mod from &quot;lib/common.ts&quot;;
-</code><button class="context_button" data-copy="import * as mod from &quot;lib/common.ts&quot;;
+</code><button class="copyButton" data-copy="import * as mod from &quot;lib/common.ts&quot;;
 "><svg class="copy" width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
 <rect x="2" y="2" width="7" height="7" fill="none"/>
 <rect x="6" y="6" width="7" height="7" fill="none"/>
-<path d="M1.55566 2.7C1.55566 2.03726 2.09292 1.5 2.75566 1.5H8.75566C9.41841 1.5 9.95566 2.03726 9.95566 2.7V5.1H12.3557C13.0184 5.1 13.5557 5.63726 13.5557 6.3V12.3C13.5557 12.9627 13.0184 13.5 12.3557 13.5H6.35566C5.69292 13.5 5.15566 12.9627 5.15566 12.3V9.9H2.75566C2.09292 9.9 1.55566 9.36274 1.55566 8.7V2.7ZM6.35566 9.9V12.3H12.3557V6.3H9.95566V8.7C9.95566 9.36274 9.41841 9.9 8.75566 9.9H6.35566ZM8.75566 8.7V2.7H2.75566V8.7H8.75566Z" fill="#232323"/>
+<path d="M1.55566 2.7C1.55566 2.03726 2.09292 1.5 2.75566 1.5H8.75566C9.41841 1.5 9.95566 2.03726 9.95566 2.7V5.1H12.3557C13.0184 5.1 13.5557 5.63726 13.5557 6.3V12.3C13.5557 12.9627 13.0184 13.5 12.3557 13.5H6.35566C5.69292 13.5 5.15566 12.9627 5.15566 12.3V9.9H2.75566C2.09292 9.9 1.55566 9.36274 1.55566 8.7V2.7ZM6.35566 9.9V12.3H12.3557V6.3H9.95566V8.7C9.95566 9.36274 9.41841 9.9 8.75566 9.9H6.35566ZM8.75566 8.7V2.7H2.75566V8.7H8.75566Z" fill="currentColor"/>
 </svg>
-<svg class="check" width="15" height="15" viewBox="0 0 24 24" stroke-width="2" stroke="#232323" fill="none" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+<svg class="check" width="15" height="15" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
 <path d="M5 12l5 5l10 -10" />
 </svg>
@@ -306,24 +322,34 @@ in the future, a new curve is added to the family (P-512)?</p>
 </div></div><nav class="topSymbols">
           <h3>Symbols</h3>
           <ul><li>
-                <a href="..&#x2F;..&#x2F;.&#x2F;.&#x2F;~&#x2F;JWKKeyPair.html" title="JWKKeyPair"><div class="docNodeKindIcon"><div class="text-Interface bg-Interface/15" title="Interface">I</div></div>
-<span class="hover:bg-Interface/15">JWKKeyPair</span>
+                <a href="..&#x2F;..&#x2F;.&#x2F;lib&#x2F;common.ts&#x2F;~&#x2F;JWKKeyPair.html" title="JWKKeyPair"><div class="docNodeKindIcon"><div class="text-Interface bg-Interface/15 dark:text-InterfaceDark dark:bg-InterfaceDark/15" title="Interface">I</div></div>
+<span class="hover:bg-Interface/15 hover:bg-InterfaceDark/15">
+                    JWKKeyPair
+                  </span>
                 </a>
               </li><li>
-                <a href="..&#x2F;..&#x2F;.&#x2F;.&#x2F;~&#x2F;JWKToMultikey.html" title="JWKToMultikey"><div class="docNodeKindIcon"><div class="text-Function bg-Function/15" title="Function">f</div></div>
-<span class="hover:bg-Function/15">JWKToMultikey</span>
+                <a href="..&#x2F;..&#x2F;.&#x2F;.&#x2F;~&#x2F;JWKToMultikey.html" title="JWKToMultikey"><div class="docNodeKindIcon"><div class="text-Function bg-Function/15 dark:text-FunctionDark dark:bg-FunctionDark/15" title="Function">f</div></div>
+<span class="hover:bg-Function/15 hover:bg-FunctionDark/15">
+                    JWKToMultikey
+                  </span>
                 </a>
               </li><li>
-                <a href="..&#x2F;..&#x2F;.&#x2F;.&#x2F;~&#x2F;Multibase.html" title="Multibase"><div class="docNodeKindIcon"><div class="text-TypeAlias bg-TypeAlias/15" title="Type Alias">T</div></div>
-<span class="hover:bg-TypeAlias/15">Multibase</span>
+                <a href="..&#x2F;..&#x2F;.&#x2F;lib&#x2F;common.ts&#x2F;~&#x2F;Multibase.html" title="Multibase"><div class="docNodeKindIcon"><div class="text-TypeAlias bg-TypeAlias/15 dark:text-TypeAliasDark dark:bg-TypeAliasDark/15" title="Type Alias">T</div></div>
+<span class="hover:bg-TypeAlias/15 hover:bg-TypeAliasDark/15">
+                    Multibase
+                  </span>
                 </a>
               </li><li>
-                <a href="..&#x2F;..&#x2F;.&#x2F;.&#x2F;~&#x2F;Multikey.html" title="Multikey"><div class="docNodeKindIcon"><div class="text-Interface bg-Interface/15" title="Interface">I</div></div>
-<span class="hover:bg-Interface/15">Multikey</span>
+                <a href="..&#x2F;..&#x2F;.&#x2F;lib&#x2F;common.ts&#x2F;~&#x2F;Multikey.html" title="Multikey"><div class="docNodeKindIcon"><div class="text-Interface bg-Interface/15 dark:text-InterfaceDark dark:bg-InterfaceDark/15" title="Interface">I</div></div>
+<span class="hover:bg-Interface/15 hover:bg-InterfaceDark/15">
+                    Multikey
+                  </span>
                 </a>
               </li><li>
-                <a href="..&#x2F;..&#x2F;.&#x2F;.&#x2F;~&#x2F;cryptoToMultikey.html" title="cryptoToMultikey"><div class="docNodeKindIcon"><div class="text-Function bg-Function/15" title="Function">f</div></div>
-<span class="hover:bg-Function/15">cryptoToMultikey</span>
+                <a href="..&#x2F;..&#x2F;.&#x2F;.&#x2F;~&#x2F;cryptoToMultikey.html" title="cryptoToMultikey"><div class="docNodeKindIcon"><div class="text-Function bg-Function/15 dark:text-FunctionDark dark:bg-FunctionDark/15" title="Function">f</div></div>
+<span class="hover:bg-Function/15 hover:bg-FunctionDark/15">
+                    cryptoToMultikey
+                  </span>
                 </a>
               </li></ul><a class="flex items-center gap-0.5" href="..&#x2F;..&#x2F;.&#x2F;all_symbols.html">
               <span class="leading-none">view all 32 symbols</span><svg
