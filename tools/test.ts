@@ -7,7 +7,6 @@
  * @module
  */
 
-import { assert } from "jsr:@std/assert";
 import {
     type JWKKeyPair,
     type Multikey,
@@ -21,6 +20,22 @@ import {
 // deno-lint-ignore no-explicit-any
 export function str(inp: any): void {
     console.log(JSON.stringify(inp, null, 4));
+}
+
+class AssertionError extends Error {
+    constructor(message: string) {
+        super(message);
+        this.name = "AssertionError";
+    }
+}
+
+/**
+ * No need for a complex assertion function, just use a simple one.
+ */
+function assert(condition: boolean, message: string): void {
+    if (!condition) {
+        throw new AssertionError(message);
+    }
 }
 
 /**
@@ -176,19 +191,19 @@ async function singleJWK(label: string, key: CryptoKey): Promise<boolean> {
 Deno.test("3.1 EDDSA crypto public key -> JWK -> MB -> JWK", async (): Promise<void> => {
     const eddsaPair: CryptoKeyPair = await crypto.subtle.generateKey({ name: "Ed25519" }, true, ["sign", "verify"]) as CryptoKeyPair;
     const compare = await singleJWK("EDDSA",  eddsaPair.publicKey);
-    console.assert(compare, "Roundtrip single JWK public key does not work with EDDSA");
+    assert(compare, "Roundtrip single JWK public key does not work with EDDSA");
 });
 
 Deno.test("3.2 ECDSA P-256 crypto public key -> JWK -> MB -> JWK", async (): Promise<void> => {
     const ecdsaPair: CryptoKeyPair = await crypto.subtle.generateKey({ name: "ECDSA", namedCurve: "P-256" }, true, ["sign", "verify"]) as CryptoKeyPair;
     const compare = await singleJWK("ECDSA P-256",  ecdsaPair.publicKey);
-    console.assert(compare, "Roundtrip single JWK public key does not work with ECDSA P-256");
+    assert(compare, "Roundtrip single JWK public key does not work with ECDSA P-256");
 });
 
 Deno.test("3.3 ECDSA P-384 crypto public key -> JWK -> MB -> JWK", async (): Promise<void> => {
     const ecdsaPair: CryptoKeyPair = await crypto.subtle.generateKey({ name: "ECDSA", namedCurve: "P-384" }, true, ["sign", "verify"]) as CryptoKeyPair;
     const compare = await singleJWK("ECDSA P-384",  ecdsaPair.publicKey);
-    console.assert(compare, "Roundtrip single JWK public key does not work with ECDSA P-384");
+    assert(compare, "Roundtrip single JWK public key does not work with ECDSA P-384");
 });
 
 /************************************************************
